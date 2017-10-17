@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "DbManager.h"
+#include "DbTablesView.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -16,9 +17,11 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    DbManager db("C:\\Users\\Pavel\\mydatabase.sqlite");
-    QSqlTableModel *model = db.getModel();
-    model->setTable("Product");
-    model->select();
-    ui->tableView->setModel(model);
+    QString dbName = "C:\\Users\\Pavel\\mydatabase.sqlite";
+    ui->tabWidget->SetDbManager(new DbManager(dbName));
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    ui->tabWidget->clearAllTabs();
 }

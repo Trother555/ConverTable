@@ -27,11 +27,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    DbManager.cpp
+    DbManager.cpp \
+    DbTablesView.cpp \
 
 HEADERS += \
         mainwindow.h \
-    DbManager.h
+    DbManager.h \
+    DbTablesView.h
 
 FORMS += \
         mainwindow.ui

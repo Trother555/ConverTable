@@ -9,9 +9,12 @@ class DbManager
 public:
     DbManager(const QString& path);
 
-    QSqlTableModel* getModel();
+    //Возвращает модель таблицы tableName, вызывая select()
+    QSqlTableModel* getModel(QString &tableName);
 
-private:
+    QStringList getTables();
+
+//private:
     QSqlDatabase m_db;
 };
 

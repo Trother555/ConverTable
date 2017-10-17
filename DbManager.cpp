@@ -13,9 +13,18 @@ DbManager::DbManager(const QString& path)
     {
         qDebug() << "Database: connection ok";
     }
+
 }
 
-QSqlTableModel* DbManager::getModel()
+QSqlTableModel* DbManager::getModel(QString &tableName)
 {
-    return new QSqlTableModel(NULL, m_db);
+    QSqlTableModel* tmpModel = new QSqlTableModel(NULL, m_db);
+    tmpModel->setTable(tableName);
+    tmpModel->select();
+    return tmpModel;
+}
+
+QStringList DbManager::getTables()
+{
+    return m_db.tables();
 }

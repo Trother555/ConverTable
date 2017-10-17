@@ -24,5 +24,7 @@ void DbTablesView::FetchTables()
 
 void DbTablesView::clearAllTabs()
 {
-
+    QWidget* w = nullptr;
+    while(w = this->widget(0))
+        delete w;
 }

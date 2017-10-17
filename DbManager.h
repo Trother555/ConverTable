@@ -10,7 +10,7 @@ public:
     DbManager(const QString& path);
 
     //Возвращает модель таблицы tableName, вызывая select()
-    QSqlTableModel* getModel(QString &tableName);
+    QSqlTableModel* getModel(const QString &tableName);
 
     QStringList getTables();
 

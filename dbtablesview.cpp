@@ -14,7 +14,7 @@ void DbTablesView::SetDbManager(DbManager * dbManager)
 void DbTablesView::FetchTables()
 {
     QStringList tableNames = m_dbm->getTables();
-    for(const auto &tableName : tableName)
+    for(const auto& tableName : tableNames)
     {
         QTableView *tView = new QTableView();
         tView->setModel(m_dbm->getModel(tableName));

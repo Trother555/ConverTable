@@ -16,7 +16,7 @@ DbManager::DbManager(const QString& path)
 
 }
 
-QSqlTableModel* DbManager::getModel(QString &tableName)
+QSqlTableModel* DbManager::getModel(const QString &tableName)
 {
     QSqlTableModel* tmpModel = new QSqlTableModel(NULL, m_db);
     tmpModel->setTable(tableName);
@@ -26,5 +26,5 @@ QSqlTableModel* DbManager::getModel(QString &tableName)
 
 QStringList DbManager::getTables()
 {
-    return m_db.tables();
+    return m_db.tables(QSql::Tables);
 }

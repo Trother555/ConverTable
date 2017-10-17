@@ -19,6 +19,7 @@ void MainWindow::on_pushButton_clicked()
 {
     QString dbName = "C:\\Users\\Pavel\\mydatabase.sqlite";
     ui->tabWidget->SetDbManager(new DbManager(dbName));
+    ui->tabWidget->FetchTables();
 }
 
 void MainWindow::on_pushButton_2_clicked()

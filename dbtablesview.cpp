@@ -26,5 +26,16 @@ void DbTablesView::clearAllTabs()
 {
     QWidget* w = nullptr;
     while(w = this->widget(0))
+    {   delete ((QTableView*)w)->model();
         delete w;
+    }
+}
+
+void DbTablesView::closeDb()
+{
+    if(m_dbm!=nullptr)
+    {
+        m_dbm->m_db.close();
+        delete m_dbm;
+    }
 }

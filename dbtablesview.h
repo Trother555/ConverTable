@@ -17,6 +17,8 @@ public:
     void FetchTables();
     //УДАЛЯЕТ все вкладки, оставля TabWidget
     void clearAllTabs();
+    //Закрывает соединение менеджера баз данных
+    void closeDb();
 };
 
 #endif // DBTABLESVIEW_H

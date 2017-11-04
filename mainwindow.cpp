@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "DbManager.h"
 #include "DbTablesView.h"
+#include <QFileDialog>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -17,12 +18,13 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    QString dbName = "C:\\Users\\Pavel\\mydatabase.sqlite";
-    ui->tabWidget->SetDbManager(new DbManager(dbName));
+    QString dbFileName = QFileDialog::getOpenFileName(this, "Файл базы данных", "", "SQLite files (*.sqlite)");
+    ui->tabWidget->SetDbManager(new DbManager(dbFileName));
     ui->tabWidget->FetchTables();
 }
 
 void MainWindow::on_pushButton_2_clicked()
 {
     ui->tabWidget->clearAllTabs();
+    ui->tabWidget->closeDb();
 }

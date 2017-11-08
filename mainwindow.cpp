@@ -3,6 +3,7 @@
 #include "DbManager.h"
 #include "DbTablesView.h"
 #include <QFileDialog>
+#include <QLabel>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),

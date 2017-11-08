@@ -20,6 +20,7 @@ void DbTablesView::FetchTables()
     {
         QTableView *tView = new QTableView();
         tView->setModel(m_dbm->getModel(tableName));
+        tView->setAlternatingRowColors(true);
         this->addTab(tView, tableName);
     }
 }
@@ -55,7 +56,6 @@ void DbTablesView::mouseReleaseEvent(QMouseEvent *event)
 
 void DbTablesView::paintEvent(QPaintEvent *e)
 {
-    QPainter painter(this);
-    painter.drawPixmap(size().width()/2, size().height()/2, QPixmap(":/images/png/add-database.png").scaled(size()/4,Qt::KeepAspectRatio));
     QWidget::paintEvent(e);
+
 }

@@ -15,10 +15,9 @@ public:
     void SetDbManager(DbManager*);
     //Загружает таблицы из предоставленного DbManager
     void FetchTables();
-    //УДАЛЯЕТ все вкладки, оставля TabWidget
+    //УДАЛЯЕТ все вкладки, оставля TabWidget и
+    //закрывает соединение менеджера баз данных
     void clearAllTabs();
-    //Закрывает соединение менеджера баз данных
-    void closeDb();
 };
 
 #endif // DBTABLESVIEW_H

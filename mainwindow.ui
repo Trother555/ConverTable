@@ -66,6 +66,9 @@
            </property>
            <item row="0" column="0">
             <widget class="DbTablesView" name="tabWidget">
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
              <property name="currentIndex">
               <number>-1</number>
              </property>
@@ -94,7 +97,7 @@
        <item row="0" column="0">
         <widget class="QPushButton" name="pushButton">
          <property name="text">
-          <string>load sql/csv</string>
+          <string>Database</string>
          </property>
         </widget>
        </item>

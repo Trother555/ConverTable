@@ -1,0 +1,5 @@
+<RCC>
+    <qresource lang="all" prefix="/images">
+        <file>png/add-database.png</file>
+    </qresource>
+</RCC>

@@ -1,6 +1,7 @@
 #include "DbTablesView.h"
 #include <QTableView>
 #include <QMouseEvent>
+#include <QPainter>
 
 DbTablesView::DbTablesView(QWidget*& p):QTabWidget(p)
 {
@@ -50,4 +51,11 @@ void DbTablesView::mouseReleaseEvent(QMouseEvent *event)
     {
         emit click();
     }
+}
+
+void DbTablesView::paintEvent(QPaintEvent *e)
+{
+    QPainter painter(this);
+    painter.drawPixmap(size().width()/2, size().height()/2, QPixmap(":/images/png/add-database.png").scaled(size()/4,Qt::KeepAspectRatio));
+    QWidget::paintEvent(e);
 }

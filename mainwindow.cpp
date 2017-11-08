@@ -36,4 +36,5 @@ void MainWindow::onDbTablesView_clicked()
     }
     QString dbFileName = QFileDialog::getOpenFileName(this, "Файл базы данных", "", "SQLite files (*.sqlite)");
     ui->tabWidget->SetDbAndFetch(new DbManager(dbFileName));
+    dbWasLoad = true;
 }

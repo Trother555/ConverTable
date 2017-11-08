@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    QObject::connect(ui->tabWidget, SIGNAL(click()), this, SLOT(onDbTablesView_clicked()));
 }
 
 MainWindow::~MainWindow()
@@ -18,12 +19,21 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    QString dbFileName = QFileDialog::getOpenFileName(this, "Файл базы данных", "", "SQLite files (*.sqlite)");
-    ui->tabWidget->SetDbManager(new DbManager(dbFileName));
-    ui->tabWidget->FetchTables();
+
 }
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    ui->tabWidget->clearAllTabs();
+
+}
+
+void MainWindow::onDbTablesView_clicked()
+{
+    if(dbWasLoad)
+    {
+        ui->tabWidget->ClearAllTabs();
+        dbWasLoad = false;
+    }
+    QString dbFileName = QFileDialog::getOpenFileName(this, "Файл базы данных", "", "SQLite files (*.sqlite)");
+    ui->tabWidget->SetDbAndFetch(new DbManager(dbFileName));
 }

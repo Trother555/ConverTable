@@ -23,8 +23,12 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    //name is not on_ because qt doesn't like it
+    void onDbTablesView_clicked();
+
 private:
     Ui::MainWindow *ui;
+    bool dbWasLoad = false;
 };
 
 #endif // MAINWINDOW_H

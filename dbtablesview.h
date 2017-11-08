@@ -7,7 +7,7 @@
 
 class DbTablesView : public QTabWidget
 {
-    //Q_OBJECT
+    Q_OBJECT
 private:
     DbManager* m_dbm = NULL;
 public:
@@ -17,7 +17,16 @@ public:
     void FetchTables();
     //УДАЛЯЕТ все вкладки, оставля TabWidget и
     //закрывает соединение менеджера баз данных
-    void clearAllTabs();
+    void ClearAllTabs();
+    //То же что вызвать SetDbManager и затем FetchTables
+    void SetDbAndFetch(DbManager*);
+
+protected:
+    void mouseReleaseEvent(QMouseEvent *event) override;
+
+signals:
+    void click();
+
 };
 
 #endif // DBTABLESVIEW_H

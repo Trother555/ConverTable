@@ -10,6 +10,7 @@ class DbTablesView : public QTabWidget
     Q_OBJECT
 private:
     DbManager* m_dbm = NULL;
+    QVector<QSqlTableModel*> models;
 public:
     DbTablesView(QWidget*&);
     void SetDbManager(DbManager*);
@@ -20,6 +21,7 @@ public:
     void ClearAllTabs();
     //То же что вызвать SetDbManager и затем FetchTables
     void SetDbAndFetch(DbManager*);
+    QVector<QSqlTableModel*> getModels();
 
 protected:
     void mouseReleaseEvent(QMouseEvent *event) override;

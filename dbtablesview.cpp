@@ -19,7 +19,9 @@ void DbTablesView::FetchTables()
     for(const auto& tableName : tableNames)
     {
         QTableView *tView = new QTableView();
-        tView->setModel(m_dbm->getModel(tableName));
+        QSqlTableModel *tmpModelPointer = m_dbm->getModel(tableName);
+        models.append(tmpModelPointer);
+        tView->setModel(tmpModelPointer);
         tView->setAlternatingRowColors(true);
         this->addTab(tView, tableName);
     }
@@ -27,6 +29,7 @@ void DbTablesView::FetchTables()
 
 void DbTablesView::ClearAllTabs()
 {
+    models.clear();
     QWidget* w = nullptr;
     while(w = this->widget(0))
     {   delete ((QTableView*)w)->model();
@@ -44,6 +47,11 @@ void DbTablesView::SetDbAndFetch(DbManager* dbManager)
 {
     m_dbm = dbManager;
     this->FetchTables();
+}
+
+QVector<QSqlTableModel*> DbTablesView::getModels()
+{
+    return models;
 }
 
 void DbTablesView::mouseReleaseEvent(QMouseEvent *event)

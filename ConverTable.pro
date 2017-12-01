@@ -29,11 +29,13 @@ SOURCES += \
         mainwindow.cpp \
     DbManager.cpp \
     DbTablesView.cpp \
+    SqlModelConverter.cpp
 
 HEADERS += \
         mainwindow.h \
     DbManager.h \
-    DbTablesView.h
+    DbTablesView.h \
+    SqlModelConverter.h
 
 FORMS += \
         mainwindow.ui

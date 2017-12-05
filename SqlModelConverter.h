@@ -18,7 +18,7 @@ public:
         m_delim(delim),m_endOfLine(endOfLine),m_getFieldNames(getFieldNames)
     {}
 
-    QString sqlToCsv(QVector<QSqlTableModel*> models);
+    void sqlToCsv(QVector<QSqlTableModel*> models, QHash<QString, QString>& result);
 };
 
 #endif // SQLMODELCONVERTER_H

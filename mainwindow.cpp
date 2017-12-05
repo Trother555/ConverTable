@@ -47,6 +47,16 @@ void MainWindow::on_pushButton_4_clicked()
 
 void MainWindow::on_pushButton_5_clicked()
 {
-    QString fileContent = converter.sqlToCsv(ui->tabWidget->getModels());
-
+    QHash<QString, QString> files;
+    converter.sqlToCsv(ui->tabWidget->getModels(), files);
+    for(auto it = files.begin();it!=files.end();++it)
+    {
+        QFile file(it.key());
+        if(file.open(QIODevice::ReadWrite))
+        {
+            QTextStream stream( &file );
+            stream << it.value();
+        }
+        file.close();
+    }
 }

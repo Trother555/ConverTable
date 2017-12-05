@@ -18,15 +18,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_pushButton_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(0);
-}
-
-void MainWindow::on_pushButton_2_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(1);
-}
 
 void MainWindow::onDbTablesView_clicked()
 {
@@ -40,12 +31,34 @@ void MainWindow::onDbTablesView_clicked()
     dbWasLoad = true;
 }
 
-void MainWindow::on_pushButton_4_clicked()
+
+
+void MainWindow::on_TabDatabase_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::on_TabCSV_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+void MainWindow::on_TabExport_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(2);
+}
+
+void MainWindow::on_TabSettings_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(3);
+}
+
+void MainWindow::on_ButtonOpenNewDB_clicked()
 {
     onDbTablesView_clicked();
 }
 
-void MainWindow::on_pushButton_5_clicked()
+void MainWindow::on_ButtonExportDBtoCSV_clicked()
 {
     QHash<QString, QString> files;
     converter.sqlToCsv(ui->tabWidget->getModels(), files);

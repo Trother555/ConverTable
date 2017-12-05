@@ -2,7 +2,13 @@
 #include <QFile>
 
 
-ErrorCode CSVTable::read(QString filename, QString sep)
+QStringList CSVTable::splitRow(const QByteArray &row, const QString& sep)
+{
+    return ((QString)row).split(sep);
+}
+
+
+ErrorCode CSVTable::read(const QString &filename, const QString &sep)
 {
     if (!table.empty())
     {
@@ -28,17 +34,43 @@ ErrorCode CSVTable::read(QString filename, QString sep)
 
     if (!file.atEnd())
     {
-        QStringList row = splitRow(file.readLine());
-        columnCount = row.count();
-
-        table.append(row);
-        ++rowCount;
+        columnNames = splitRow(file.readLine(), sep);
+        columnCount = columnNames.count();
+        columnTypes.fill(ElementType::INT, columnCount);
     }
 
 
     while (!file.atEnd())
     {
+        QStringList row = splitRow(file.readLine(), sep);
 
+        if (columnCount != row.count())
+        {
+            file.close();
+            return ErrorCode::UNEQUAL_COLUMN_COUNT;
+        }
+
+        for (int i = 0; i < row.count(); ++i)
+        {
+            ElementType type = getType(x);
+
+            //Типы введены так:
+            //INT = 0
+            //DOUBLE = 1
+            //STRING = 2
+            //Если тип элемента столбца в текущей строке больше, чем тип предыдущих
+            //элементов этого столбца, то нужно изменить тип всего столбца
+            if (type > columnTypes[i])
+            {
+                columnTypes[i] = type;
+            }
+        }
+
+        table.append(row);
+        ++rowCount;
     }
 
-};
+    return ErrorCode::NO_ERROR;
+}
+
+

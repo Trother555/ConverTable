@@ -20,7 +20,7 @@ class CSVTable : public QObject
     Q_OBJECT
 public:
     explicit CSVTable(QObject *parent) : QObject(parent){}
-    ErrorCode read(QString filename, QString sep);
+    ErrorCode read(const QString& filename, const QString& sep);
 
 signals:
 
@@ -29,7 +29,8 @@ public slots:
 private:
     QList<QStringList> table;
     QVector<ElementType> columnTypes;
-    QStringList splitRow(const QByteArray& row);
+    QStringList columnNames;
+    QStringList splitRow(const QByteArray& row, const QString& sep);
 
     unsigned int rowCount, columnCount;
 };

@@ -36,9 +36,12 @@ private slots:
 
     void on_ButtonExportDBtoCSV_clicked();
 
+    void on_ButtonOpenNewCSV_clicked();
+
 private:
     Ui::MainWindow *ui;
     bool dbWasLoad = false;
+    bool csvWasLoad = false;
     SqlModelConverter converter;
 };
 

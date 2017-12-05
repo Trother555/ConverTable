@@ -4,6 +4,7 @@
 #include "DbTablesView.h"
 #include <QFileDialog>
 #include <QLabel>
+#include "csvtable.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -72,4 +73,17 @@ void MainWindow::on_ButtonExportDBtoCSV_clicked()
         }
         file.close();
     }
+}
+
+void MainWindow::on_ButtonOpenNewCSV_clicked()
+{
+    if(csvWasLoad)
+    {
+        ui->TableCSV->clear();
+        dbWasLoad = false;
+    }
+    QString dbFileName = QFileDialog::getOpenFileName(this, "Файл базы данных", "", "SQLite files (*.sqlite)");
+    ui->tabWidget->SetDbAndFetch(new DbManager(dbFileName));
+    dbWasLoad = true;
+    CSVTable table;
 }

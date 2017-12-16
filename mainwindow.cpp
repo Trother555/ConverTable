@@ -109,8 +109,8 @@ void MainWindow::on_ButtonOpenNewCSV_clicked()
         ui->TableCSV->clear();
         dbWasLoad = false;
     }
-    QString dbFileName = QFileDialog::getOpenFileName(this, "Файл базы данных", "", "SQLite files (*.sqlite)");
+    /*QString dbFileName = QFileDialog::getOpenFileName(this, "Файл базы данных", "", "SQLite files (*.sqlite)");
     ui->tabWidget->SetDbAndFetch(new DbManager(dbFileName));
     dbWasLoad = true;
-    CSVTable table;
+    CSVTable table;*/
 }

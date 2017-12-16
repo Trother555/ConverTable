@@ -42,7 +42,7 @@
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>2</number>
          </property>
          <widget class="QWidget" name="tables">
           <property name="sizePolicy">
@@ -216,6 +216,51 @@
             </widget>
            </item>
           </layout>
+         </widget>
+         <widget class="QWidget" name="exportSettings">
+          <widget class="QGroupBox" name="groupBox">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>20</y>
+             <width>561</width>
+             <height>71</height>
+            </rect>
+           </property>
+           <property name="title">
+            <string>Path selection</string>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_4">
+            <item row="0" column="0">
+             <widget class="QTextEdit" name="textEdit"/>
+            </item>
+            <item row="0" column="1">
+             <widget class="QPushButton" name="pushButton_6">
+              <property name="text">
+               <string>Set csv path</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QGroupBox" name="TablesToExport">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>110</y>
+             <width>561</width>
+             <height>221</height>
+            </rect>
+           </property>
+           <property name="title">
+            <string>Tables to export</string>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_5">
+            <item row="0" column="0">
+             <widget class="QListWidget" name="listWidget"/>
+            </item>
+           </layout>
+          </widget>
          </widget>
         </widget>
        </item>

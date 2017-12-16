@@ -40,7 +40,7 @@ ErrorCode CSVTable::read(const QString &filename, const QString &sep)
     }
 
 
-    while (!file.atEnd())
+    /*while (!file.atEnd())
     {
         QStringList row = splitRow(file.readLine(), sep);
 
@@ -68,7 +68,7 @@ ErrorCode CSVTable::read(const QString &filename, const QString &sep)
 
         table.append(row);
         ++rowCount;
-    }
+    }*/
 
     return ErrorCode::NO_ERROR;
 }

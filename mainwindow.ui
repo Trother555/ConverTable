@@ -14,8 +14,8 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
+   <layout class="QGridLayout" name="gridLayout_6">
+    <item row="0" column="0">
      <widget class="QWidget" name="widget_2" native="true">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -23,10 +23,7 @@
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <property name="spacing">
-        <number>0</number>
-       </property>
+      <layout class="QGridLayout" name="gridLayout_7">
        <property name="leftMargin">
         <number>0</number>
        </property>
@@ -39,13 +36,13 @@
        <property name="bottomMargin">
         <number>0</number>
        </property>
-       <item>
+       <item row="0" column="0">
         <widget class="QStackedWidget" name="stackedWidget">
          <property name="styleSheet">
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="tables">
           <property name="sizePolicy">
@@ -68,7 +65,7 @@
             <number>0</number>
            </property>
            <property name="spacing">
-            <number>0</number>
+            <number>6</number>
            </property>
            <item row="0" column="0">
             <widget class="QWidget" name="widget_3" native="true">
@@ -111,7 +108,7 @@
                 </property>
                 <layout class="QGridLayout" name="gridLayout_3">
                  <item row="0" column="0">
-                  <widget class="QPushButton" name="pushButton_4">
+                  <widget class="QPushButton" name="ButtonOpenNewDB">
                    <property name="styleSheet">
                     <string notr="true"/>
                    </property>
@@ -121,7 +118,7 @@
                   </widget>
                  </item>
                  <item row="0" column="1">
-                  <widget class="QPushButton" name="pushButton_5">
+                  <widget class="QPushButton" name="ButtonExportDBtoCSV">
                    <property name="text">
                     <string>export to csv</string>
                    </property>
@@ -135,110 +132,133 @@
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="page_3">
-          <widget class="QGroupBox" name="groupBox">
-           <property name="geometry">
-            <rect>
-             <x>20</x>
-             <y>20</y>
-             <width>561</width>
-             <height>71</height>
-            </rect>
+         <widget class="QWidget" name="CSV">
+          <layout class="QGridLayout" name="gridLayout_9">
+           <property name="leftMargin">
+            <number>0</number>
            </property>
-           <property name="title">
-            <string>Path selection</string>
+           <property name="topMargin">
+            <number>0</number>
            </property>
-           <layout class="QGridLayout" name="gridLayout_4">
-            <item row="0" column="0">
-             <widget class="QTextEdit" name="textEdit"/>
-            </item>
-            <item row="0" column="1">
-             <widget class="QPushButton" name="pushButton_6">
-              <property name="text">
-               <string>Set csv path</string>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QWidget" name="widget_5" native="true">
+             <layout class="QGridLayout" name="gridLayout_8">
+              <property name="leftMargin">
+               <number>0</number>
               </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QGroupBox" name="TablesToExport">
-           <property name="geometry">
-            <rect>
-             <x>20</x>
-             <y>110</y>
-             <width>561</width>
-             <height>221</height>
-            </rect>
-           </property>
-           <property name="title">
-            <string>Tables to export</string>
-           </property>
-           <layout class="QGridLayout" name="gridLayout_5">
-            <item row="0" column="0">
-             <widget class="QListWidget" name="listWidget"/>
-            </item>
-           </layout>
-          </widget>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <property name="horizontalSpacing">
+               <number>0</number>
+              </property>
+              <property name="verticalSpacing">
+               <number>6</number>
+              </property>
+              <item row="0" column="0">
+               <widget class="QTabWidget" name="TableCSV">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>6</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="currentIndex">
+                 <number>-1</number>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QWidget" name="widget_6" native="true">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>1</verstretch>
+                 </sizepolicy>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_5">
+                 <item row="0" column="0">
+                  <widget class="QPushButton" name="ButtonOpenNewCSV">
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <property name="text">
+                    <string>New CSV</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="QPushButton" name="ButtonExportToDB">
+                   <property name="text">
+                    <string>Export to DB</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </widget>
        </item>
       </layout>
      </widget>
     </item>
-    <item>
+    <item row="0" column="1">
      <widget class="QWidget" name="widget" native="true">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
         <horstretch>1</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>125</width>
-        <height>400</height>
-       </size>
       </property>
       <property name="styleSheet">
        <string notr="true"/>
       </property>
       <layout class="QGridLayout" name="gridLayout">
-       <item row="0" column="0">
-        <widget class="QPushButton" name="pushButton">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
+       <item row="3" column="0">
+        <widget class="QPushButton" name="TabSettings">
+         <property name="text">
+          <string>settings</string>
          </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QPushButton" name="TabDatabase">
          <property name="text">
           <string>Database</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="0">
-        <widget class="QPushButton" name="pushButton_2">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
+       <item row="2" column="0">
+        <widget class="QPushButton" name="TabExport">
          <property name="text">
-          <string>Export settings</string>
+          <string>export</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="0">
-        <widget class="QPushButton" name="pushButton_3">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
+       <item row="1" column="0">
+        <widget class="QPushButton" name="TabCSV">
          <property name="text">
-          <string>settings</string>
+          <string>CSV</string>
          </property>
         </widget>
        </item>

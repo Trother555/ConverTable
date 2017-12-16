@@ -4,6 +4,7 @@
 #include "DbTablesView.h"
 #include <QFileDialog>
 #include <QLabel>
+#include "csvtable.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -18,15 +19,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_pushButton_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(0);
-}
-
-void MainWindow::on_pushButton_2_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(1);
-}
 
 void MainWindow::onDbTablesView_clicked()
 {
@@ -51,12 +43,34 @@ void MainWindow::onDbTablesView_clicked()
     dbWasLoad = true;
 }
 
-void MainWindow::on_pushButton_4_clicked()
+
+
+void MainWindow::on_TabDatabase_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::on_TabCSV_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+void MainWindow::on_TabExport_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(2);
+}
+
+void MainWindow::on_TabSettings_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(3);
+}
+
+void MainWindow::on_ButtonOpenNewDB_clicked()
 {
     onDbTablesView_clicked();
 }
 
-void MainWindow::on_pushButton_5_clicked()
+void MainWindow::on_ButtonExportDBtoCSV_clicked()
 {
     QHash<QString, QString> files;
     QStringList tablesToSave;
@@ -86,4 +100,17 @@ void MainWindow::on_pushButton_6_clicked()
     dialog.setOption(QFileDialog::ShowDirsOnly);
     dialog.exec();
     converter.options.setPath(dialog.selectedFiles()[0]);
+}
+
+void MainWindow::on_ButtonOpenNewCSV_clicked()
+{
+    if(csvWasLoad)
+    {
+        ui->TableCSV->clear();
+        dbWasLoad = false;
+    }
+    QString dbFileName = QFileDialog::getOpenFileName(this, "Файл базы данных", "", "SQLite files (*.sqlite)");
+    ui->tabWidget->SetDbAndFetch(new DbManager(dbFileName));
+    dbWasLoad = true;
+    CSVTable table;
 }

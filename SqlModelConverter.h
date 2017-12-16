@@ -4,21 +4,30 @@
 #include <QString>
 #include <QtSql>
 
+class ConverterOptions
+{
+    friend class SqlModelConverter;
+    QString m_path;
+    QString m_delim;
+    QString m_endOfLine;
+public:
+    ConverterOptions(QString path="",QString delim ="", QString eol = ""):m_path(path), m_delim(delim), m_endOfLine(eol){}
+    QString getPath() {return m_path==""?"":m_path+"/";}
+    QString getDelim() {return m_delim;}
+    QString getEndOfLine() {return m_endOfLine;}
+    void setPath(QString path){m_path = path;}
+    void setDelim(QString delim){m_delim = delim;}
+    void setEndOfLine(QString eol){m_endOfLine = eol;}
+};
+
 class SqlModelConverter
 {
-private:
-    const QString m_delim;
-    const QString m_endOfLine;
-    const bool m_getFieldNames;
-
 public:
-    SqlModelConverter(QString delim = ",",
-                      QString endOfLine = "\n",
-                      bool getFieldNames = false):
-        m_delim(delim),m_endOfLine(endOfLine),m_getFieldNames(getFieldNames)
-    {}
-
-    void sqlToCsv(QVector<QSqlTableModel*> models, QHash<QString, QString>& result);
+    SqlModelConverter(QString path="", QString delim = ",",
+                      QString endOfLine = "\n");
+    SqlModelConverter(ConverterOptions);
+    void sqlToCsv(const QVector<QSqlTableModel*> &models, const QStringList &tablesToConvert, QHash<QString, QString>& result);
+    ConverterOptions options;
 };
 
 #endif // SQLMODELCONVERTER_H

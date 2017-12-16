@@ -35,12 +35,8 @@ void DbTablesView::ClearAllTabs()
     {   delete ((QTableView*)w)->model();
         delete w;
     }
-
     if(m_dbm!=nullptr)
-    {
-        m_dbm->m_db.close();
         delete m_dbm;
-    }
 }
 
 void DbTablesView::SetDbAndFetch(DbManager* dbManager)

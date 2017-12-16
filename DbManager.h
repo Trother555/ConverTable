@@ -13,6 +13,7 @@ public:
     QSqlTableModel* getModel(const QString &tableName);
 
     QStringList getTables();
+    ~DbManager();
 
 //private:
     QSqlDatabase m_db;

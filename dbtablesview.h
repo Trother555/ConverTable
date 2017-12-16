@@ -13,6 +13,7 @@ private:
     QVector<QSqlTableModel*> models;
 public:
     DbTablesView(QWidget*&);
+    //Устанавливает менеджер бд. Ссылку хранить не нужно. Будет удалён вызовом ClearAllTables.
     void SetDbManager(DbManager*);
     //Загружает таблицы из предоставленного DbManager
     void FetchTables();

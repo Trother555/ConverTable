@@ -28,3 +28,8 @@ QStringList DbManager::getTables()
 {
     return m_db.tables(QSql::Tables);
 }
+
+DbManager::~DbManager()
+{
+    m_db.close();
+}

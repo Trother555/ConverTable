@@ -32,11 +32,22 @@ void MainWindow::onDbTablesView_clicked()
 {
     if(dbWasLoad)
     {
+        //exec yes-no dialog for clearing current connection
         ui->tabWidget->ClearAllTabs();
         dbWasLoad = false;
     }
     QString dbFileName = QFileDialog::getOpenFileName(this, "Файл базы данных", "", "SQLite files (*.sqlite)");
-    ui->tabWidget->SetDbAndFetch(new DbManager(dbFileName));
+    DbManager *db = new DbManager(dbFileName);
+    ui->tabWidget->SetDbAndFetch(db);
+    //Set db list in settings
+    for(auto name:db->getTables())
+    {
+        QListWidgetItem *it = new QListWidgetItem();
+        it->setText(name);
+        it->setFlags(Qt::ItemIsEnabled|Qt::ItemIsUserCheckable);
+        it->setCheckState(Qt::Checked);
+        ui->listWidget->addItem(it);
+    }
     dbWasLoad = true;
 }
 
@@ -48,10 +59,17 @@ void MainWindow::on_pushButton_4_clicked()
 void MainWindow::on_pushButton_5_clicked()
 {
     QHash<QString, QString> files;
-    converter.sqlToCsv(ui->tabWidget->getModels(), files);
+    QStringList tablesToSave;
+    for(int i = 0;i<ui->listWidget->count();i++)
+    {
+        auto item = ui->listWidget->item(i);
+        if(item->checkState() == Qt::Checked)
+            tablesToSave.push_back(item->text());
+    }
+    converter.sqlToCsv(ui->tabWidget->getModels(), tablesToSave, files);
     for(auto it = files.begin();it!=files.end();++it)
     {
-        QFile file(it.key());
+        QFile file(converter.options.getPath() + it.key());
         if(file.open(QIODevice::ReadWrite))
         {
             QTextStream stream( &file );
@@ -59,4 +77,13 @@ void MainWindow::on_pushButton_5_clicked()
         }
         file.close();
     }
+}
+
+void MainWindow::on_pushButton_6_clicked()
+{
+    QFileDialog dialog;
+    dialog.setFileMode(QFileDialog::Directory);
+    dialog.setOption(QFileDialog::ShowDirsOnly);
+    dialog.exec();
+    converter.options.setPath(dialog.selectedFiles()[0]);
 }

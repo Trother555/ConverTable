@@ -56,16 +56,24 @@ void MainWindow::on_ButtonOpenNewDB_clicked()
         dbWasLoad = false;
     }
     QString dbFileName = QFileDialog::getOpenFileName(this, "Db file", "", "SQLite files (*.sqlite)");
-    DbManager *db = new DbManager(dbFileName);
+    if(dbManager!=nullptr)
+        delete dbManager;
+    dbManager = new DbManager(dbFileName);
     //Заполнить представление для таблиц бд
-    ui->tabWidget->SetAndFetch(db);
+    ui->tabWidget->SetAndFetch(dbManager);
     //Заполнить представление для списка таблиц с выбором таблиц на импорт
-    ui->listWidget->SetAndFetch(db);
+    ui->listWidget->SetAndFetch(dbManager);
     dbWasLoad = true;
 }
 
 void MainWindow::on_ButtonExportDBtoCSV_clicked()
 {
+    if(!dbWasLoad)
+    {
+        QMessageBox::warning(this,"Error","Db was not load");
+        return;
+    }
+
     auto tablesToSave = ui->listWidget->GetTablesToSave();
     QHash<QString, QString> files;
     converter.sqlToCsv(ui->tabWidget->getModels(), tablesToSave, files);

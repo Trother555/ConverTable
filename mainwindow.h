@@ -42,6 +42,7 @@ private:
     bool dbWasLoad = false;
     bool csvWasLoad = false;
     SqlModelConverter converter;
+    DbManager* dbManager = nullptr;
 };
 
 #endif // MAINWINDOW_H

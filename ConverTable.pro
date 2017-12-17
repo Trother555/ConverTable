@@ -31,7 +31,8 @@ SOURCES += \
     DbTablesView.cpp \
     SqlModelConverter.cpp \
     elementtype.cpp \
-    csvtable.cpp
+    csvtable.cpp \
+    DbNamesListView.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -39,7 +40,8 @@ HEADERS += \
     DbTablesView.h \
     SqlModelConverter.h \
     csvtable.h \
-    elemettype.h
+    elemettype.h \
+    DbNamesListView.h
 
 FORMS += \
         mainwindow.ui

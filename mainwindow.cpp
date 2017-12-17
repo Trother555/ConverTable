@@ -5,6 +5,7 @@
 #include <QFileDialog>
 #include <QLabel>
 #include "csvtable.h"
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -18,32 +19,6 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-
-
-void MainWindow::onDbTablesView_clicked()
-{
-    if(dbWasLoad)
-    {
-        //exec yes-no dialog for clearing current connection
-        ui->tabWidget->ClearAllTabs();
-        dbWasLoad = false;
-    }
-    QString dbFileName = QFileDialog::getOpenFileName(this, "Файл базы данных", "", "SQLite files (*.sqlite)");
-    DbManager *db = new DbManager(dbFileName);
-    ui->tabWidget->SetDbAndFetch(db);
-    //Set db list in settings
-    for(auto name:db->getTables())
-    {
-        QListWidgetItem *it = new QListWidgetItem();
-        it->setText(name);
-        it->setFlags(Qt::ItemIsEnabled|Qt::ItemIsUserCheckable);
-        it->setCheckState(Qt::Checked);
-        ui->listWidget->addItem(it);
-    }
-    dbWasLoad = true;
-}
-
-
 
 void MainWindow::on_TabDatabase_clicked()
 {
@@ -67,7 +42,29 @@ void MainWindow::on_TabSettings_clicked()
 
 void MainWindow::on_ButtonOpenNewDB_clicked()
 {
-    onDbTablesView_clicked();
+    if(dbWasLoad)
+    {
+        auto q = QMessageBox::question(this,
+            "Closing db", "This will close currently open db. Do you want to continue?",
+            QMessageBox::Yes|QMessageBox::No);
+        if(q == QMessageBox::No)
+            return;
+        ui->tabWidget->Clear();
+        dbWasLoad = false;
+    }
+    QString dbFileName = QFileDialog::getOpenFileName(this, "Db file", "", "SQLite files (*.sqlite)");
+    DbManager *db = new DbManager(dbFileName);
+    ui->tabWidget->SetAndFetch(db);
+    //Set db list in settings
+    for(auto name:db->getTables())
+    {
+        QListWidgetItem *it = new QListWidgetItem();
+        it->setText(name);
+        it->setFlags(Qt::ItemIsEnabled|Qt::ItemIsUserCheckable);
+        it->setCheckState(Qt::Checked);
+        ui->listWidget->addItem(it);
+    }
+    dbWasLoad = true;
 }
 
 void MainWindow::on_ButtonExportDBtoCSV_clicked()
@@ -93,7 +90,7 @@ void MainWindow::on_ButtonExportDBtoCSV_clicked()
     }
 }
 
-void MainWindow::on_pushButton_6_clicked()
+void MainWindow::on_ButtonSetCsvPath_clicked()
 {
     QFileDialog dialog;
     dialog.setFileMode(QFileDialog::Directory);

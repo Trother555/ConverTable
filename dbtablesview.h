@@ -17,11 +17,10 @@ public:
     void SetDbManager(DbManager*);
     //Загружает таблицы из предоставленного DbManager
     void FetchTables();
-    //УДАЛЯЕТ все вкладки, оставля TabWidget и
-    //закрывает соединение менеджера баз данных
-    void ClearAllTabs();
-    //То же что вызвать SetDbManager и затем FetchTables
-    void SetDbAndFetch(DbManager*);
+    //Очищает ресурсы, выделенные представлению
+    void Clear();
+    //Сокращение для SetDbManager и FetchTables
+    void SetAndFetch(DbManager*);
     QVector<QSqlTableModel*> getModels();
 
 protected:

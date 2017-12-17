@@ -235,7 +235,7 @@
              <widget class="QTextEdit" name="textEdit"/>
             </item>
             <item row="0" column="1">
-             <widget class="QPushButton" name="pushButton_6">
+             <widget class="QPushButton" name="ButtonSetCsvPath">
               <property name="text">
                <string>Set csv path</string>
               </property>

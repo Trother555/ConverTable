@@ -21,9 +21,6 @@ public:
 
 private slots:
 
-    //name is not on_ because qt doesn't like it
-    void onDbTablesView_clicked();
-
     void on_TabDatabase_clicked();
 
     void on_TabCSV_clicked();
@@ -38,7 +35,7 @@ private slots:
 
     void on_ButtonOpenNewCSV_clicked();
 
-    void on_pushButton_6_clicked();
+    void on_ButtonSetCsvPath_clicked();
 
 private:
     Ui::MainWindow *ui;

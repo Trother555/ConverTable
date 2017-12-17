@@ -27,7 +27,7 @@ void DbTablesView::FetchTables()
     }
 }
 
-void DbTablesView::ClearAllTabs()
+void DbTablesView::Clear()
 {
     models.clear();
     QWidget* w = nullptr;
@@ -39,7 +39,7 @@ void DbTablesView::ClearAllTabs()
         delete m_dbm;
 }
 
-void DbTablesView::SetDbAndFetch(DbManager* dbManager)
+void DbTablesView::SetAndFetch(DbManager* dbManager)
 {
     m_dbm = dbManager;
     this->FetchTables();

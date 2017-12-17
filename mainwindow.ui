@@ -255,11 +255,16 @@
            <property name="title">
             <string>Tables to export</string>
            </property>
-           <layout class="QGridLayout" name="gridLayout_5">
-            <item row="0" column="0">
-             <widget class="QListWidget" name="listWidget"/>
-            </item>
-           </layout>
+           <widget class="DbNamesListView" name="listWidget">
+            <property name="geometry">
+             <rect>
+              <x>12</x>
+              <y>28</y>
+              <width>537</width>
+              <height>181</height>
+             </rect>
+            </property>
+           </widget>
           </widget>
          </widget>
         </widget>
@@ -320,6 +325,11 @@
    <extends>QTabWidget</extends>
    <header>dbtablesview.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>DbNamesListView</class>
+   <extends>QListWidget</extends>
+   <header location="global">DbNamesListView.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

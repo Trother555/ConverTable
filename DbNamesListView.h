@@ -3,17 +3,48 @@
 #include <QListWidget>
 #include "DbManager.h"
 
-class DbNamesListView : QListWidget
+/**
+ * @brief Представление для списка имён таблиц бд с возможностью выбора
+ *
+ */
+class DbNamesListView : public QListWidget
 {
     Q_OBJECT
-    QStringList tableNames;
+    DbManager* m_dbm;
 public:
-    DbNamesListView(QWidget*&);
+    /**
+     * @brief Конструктор для преобразования(promotion) исходного класса qt
+     *
+     * @param виджет-родитель
+     */
+    DbNamesListView(QWidget*);
+    /**
+     * @brief Установить внутренний менеджер бд
+     *
+     * @param[in] Указатель на менеджер бд
+     */
     void SetDbManager(DbManager*);
+    /**
+     * @brief Загрузить информацию из бд в представление
+     *
+     */
     void FetchTables();
+    /**
+     * @brief Очистить представление
+     *
+     */
     void Clear();
-    //То же что вызвать SetDbManager и затем FetchTables
+    /**
+     * @brief Сокращение для SetDbManager и FetchTables
+     *
+     * @param[in] Указатель на менеджер бд
+     */
     void SetAndFetch(DbManager*);
+    /**
+     * @brief Возвращает список имён таблиц, отмеченных в представлении
+     *
+     */
+    QStringList GetTablesToSave();
 };
 
 #endif // DBNAMESLISTVIEW_H

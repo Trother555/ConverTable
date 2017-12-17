@@ -1,0 +1,92 @@
+\hypertarget{class_db_names_list_view}{}\section{Db\+Names\+List\+View Class Reference}
+\label{class_db_names_list_view}\index{Db\+Names\+List\+View@{Db\+Names\+List\+View}}
+
+
+Представление для списка имён таблиц бд с возможностью выбора  
+
+
+
+
+{\ttfamily \#include $<$Db\+Names\+List\+View.\+h$>$}
+
+Inheritance diagram for Db\+Names\+List\+View\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_db_names_list_view}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_db_names_list_view_a9898875686d3f621cf5e2be021e32b3c}{Db\+Names\+List\+View} (Q\+Widget $\ast$\&)
+\begin{DoxyCompactList}\small\item\em Конструктор для преобразования(promotion) исходного класса qt. \end{DoxyCompactList}\item 
+void \hyperlink{class_db_names_list_view_a323e31a217223ca8819030b455e88539}{Set\+Db\+Manager} (\hyperlink{class_db_manager}{Db\+Manager} $\ast$)
+\begin{DoxyCompactList}\small\item\em Установить внутренний менеджер бд \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_db_names_list_view_a9c1889b82032cd1001b2fa1505eead11}\label{class_db_names_list_view_a9c1889b82032cd1001b2fa1505eead11}} 
+void \hyperlink{class_db_names_list_view_a9c1889b82032cd1001b2fa1505eead11}{Fetch\+Tables} ()
+\begin{DoxyCompactList}\small\item\em Загрузить информацию из бд в представление \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_db_names_list_view_a47edbf1349f633347f016d7496a55dab}\label{class_db_names_list_view_a47edbf1349f633347f016d7496a55dab}} 
+void \hyperlink{class_db_names_list_view_a47edbf1349f633347f016d7496a55dab}{Clear} ()
+\begin{DoxyCompactList}\small\item\em Очистить представление \end{DoxyCompactList}\item 
+void \hyperlink{class_db_names_list_view_a14be2f72bf633024312843c43b353927}{Set\+And\+Fetch} (\hyperlink{class_db_manager}{Db\+Manager} $\ast$)
+\begin{DoxyCompactList}\small\item\em Сокращение для Set\+Db\+Manager и Fetch\+Tables. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Представление для списка имён таблиц бд с возможностью выбора 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_db_names_list_view_a9898875686d3f621cf5e2be021e32b3c}\label{class_db_names_list_view_a9898875686d3f621cf5e2be021e32b3c}} 
+\index{Db\+Names\+List\+View@{Db\+Names\+List\+View}!Db\+Names\+List\+View@{Db\+Names\+List\+View}}
+\index{Db\+Names\+List\+View@{Db\+Names\+List\+View}!Db\+Names\+List\+View@{Db\+Names\+List\+View}}
+\subsubsection{\texorpdfstring{Db\+Names\+List\+View()}{DbNamesListView()}}
+{\footnotesize\ttfamily Db\+Names\+List\+View\+::\+Db\+Names\+List\+View (\begin{DoxyParamCaption}\item[{Q\+Widget $\ast$\&}]{p }\end{DoxyParamCaption})}
+
+
+
+Конструктор для преобразования(promotion) исходного класса qt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em виджет-\/родитель} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_db_names_list_view_a14be2f72bf633024312843c43b353927}\label{class_db_names_list_view_a14be2f72bf633024312843c43b353927}} 
+\index{Db\+Names\+List\+View@{Db\+Names\+List\+View}!Set\+And\+Fetch@{Set\+And\+Fetch}}
+\index{Set\+And\+Fetch@{Set\+And\+Fetch}!Db\+Names\+List\+View@{Db\+Names\+List\+View}}
+\subsubsection{\texorpdfstring{Set\+And\+Fetch()}{SetAndFetch()}}
+{\footnotesize\ttfamily void Db\+Names\+List\+View\+::\+Set\+And\+Fetch (\begin{DoxyParamCaption}\item[{\hyperlink{class_db_manager}{Db\+Manager} $\ast$}]{ }\end{DoxyParamCaption})}
+
+
+
+Сокращение для Set\+Db\+Manager и Fetch\+Tables. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em Указатель} & на менеджер бд \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_db_names_list_view_a323e31a217223ca8819030b455e88539}\label{class_db_names_list_view_a323e31a217223ca8819030b455e88539}} 
+\index{Db\+Names\+List\+View@{Db\+Names\+List\+View}!Set\+Db\+Manager@{Set\+Db\+Manager}}
+\index{Set\+Db\+Manager@{Set\+Db\+Manager}!Db\+Names\+List\+View@{Db\+Names\+List\+View}}
+\subsubsection{\texorpdfstring{Set\+Db\+Manager()}{SetDbManager()}}
+{\footnotesize\ttfamily void Db\+Names\+List\+View\+::\+Set\+Db\+Manager (\begin{DoxyParamCaption}\item[{\hyperlink{class_db_manager}{Db\+Manager} $\ast$}]{db\+Manager }\end{DoxyParamCaption})}
+
+
+
+Установить внутренний менеджер бд 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em Указатель} & на менеджер бд \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Db\+Names\+List\+View.\+h\item 
+dbnameslistview.\+cpp\end{DoxyCompactItemize}

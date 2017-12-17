@@ -17,6 +17,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+    ui->listWidget->Clear();
+    ui->tabWidget->Clear();
     delete ui;
 }
 
@@ -50,33 +52,22 @@ void MainWindow::on_ButtonOpenNewDB_clicked()
         if(q == QMessageBox::No)
             return;
         ui->tabWidget->Clear();
+        ui->listWidget->Clear();
         dbWasLoad = false;
     }
     QString dbFileName = QFileDialog::getOpenFileName(this, "Db file", "", "SQLite files (*.sqlite)");
     DbManager *db = new DbManager(dbFileName);
+    //Заполнить представление для таблиц бд
     ui->tabWidget->SetAndFetch(db);
-    //Set db list in settings
-    for(auto name:db->getTables())
-    {
-        QListWidgetItem *it = new QListWidgetItem();
-        it->setText(name);
-        it->setFlags(Qt::ItemIsEnabled|Qt::ItemIsUserCheckable);
-        it->setCheckState(Qt::Checked);
-        ui->listWidget->addItem(it);
-    }
+    //Заполнить представление для списка таблиц с выбором таблиц на импорт
+    ui->listWidget->SetAndFetch(db);
     dbWasLoad = true;
 }
 
 void MainWindow::on_ButtonExportDBtoCSV_clicked()
 {
+    auto tablesToSave = ui->listWidget->GetTablesToSave();
     QHash<QString, QString> files;
-    QStringList tablesToSave;
-    for(int i = 0;i<ui->listWidget->count();i++)
-    {
-        auto item = ui->listWidget->item(i);
-        if(item->checkState() == Qt::Checked)
-            tablesToSave.push_back(item->text());
-    }
     converter.sqlToCsv(ui->tabWidget->getModels(), tablesToSave, files);
     for(auto it = files.begin();it!=files.end();++it)
     {

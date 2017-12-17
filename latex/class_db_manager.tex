@@ -1,0 +1,94 @@
+\hypertarget{class_db_manager}{}\section{Db\+Manager Class Reference}
+\label{class_db_manager}\index{Db\+Manager@{Db\+Manager}}
+
+
+Класс для работы с базой данных. Содержит минимальный набор функций для работы с бд.  
+
+
+
+
+{\ttfamily \#include $<$Db\+Manager.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_db_manager_a449b4cc451c4ec493345d799891e7eaa}{Db\+Manager} (const Q\+String \&path)
+\item 
+Q\+Sql\+Table\+Model $\ast$ \hyperlink{class_db_manager_a4b9a7828f0d6e53b695da5168570653c}{get\+Model} (const Q\+String \&table\+Name)
+\begin{DoxyCompactList}\small\item\em Возвращает модель таблицы table\+Name, вызывая select() (см. Q\+Sql\+Table\+Model\+::select()) \end{DoxyCompactList}\item 
+Q\+String\+List \hyperlink{class_db_manager_a56efe9d49dc68dcdef05ae834f7618b0}{get\+Tables} ()
+\begin{DoxyCompactList}\small\item\em Возвращает таблицы \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_db_manager_ac5cdf8e5e932d1681ab807d8f256374c}\label{class_db_manager_ac5cdf8e5e932d1681ab807d8f256374c}} 
+\hyperlink{class_db_manager_ac5cdf8e5e932d1681ab807d8f256374c}{$\sim$\+Db\+Manager} ()
+\begin{DoxyCompactList}\small\item\em Возвращает список с именами таблиц. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Q\+Sql\+Database \hyperlink{class_db_manager_a289f7f1c539781db95292c79fb13a632}{m\+\_\+db}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Класс для работы с базой данных. Содержит минимальный набор функций для работы с бд. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_db_manager_a449b4cc451c4ec493345d799891e7eaa}\label{class_db_manager_a449b4cc451c4ec493345d799891e7eaa}} 
+\index{Db\+Manager@{Db\+Manager}!Db\+Manager@{Db\+Manager}}
+\index{Db\+Manager@{Db\+Manager}!Db\+Manager@{Db\+Manager}}
+\subsubsection{\texorpdfstring{Db\+Manager()}{DbManager()}}
+{\footnotesize\ttfamily Db\+Manager\+::\+Db\+Manager (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{path }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em path} & Путь к базе данных \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_db_manager_a4b9a7828f0d6e53b695da5168570653c}\label{class_db_manager_a4b9a7828f0d6e53b695da5168570653c}} 
+\index{Db\+Manager@{Db\+Manager}!get\+Model@{get\+Model}}
+\index{get\+Model@{get\+Model}!Db\+Manager@{Db\+Manager}}
+\subsubsection{\texorpdfstring{get\+Model()}{getModel()}}
+{\footnotesize\ttfamily Q\+Sql\+Table\+Model $\ast$ Db\+Manager\+::get\+Model (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{table\+Name }\end{DoxyParamCaption})}
+
+
+
+Возвращает модель таблицы table\+Name, вызывая select() (см. Q\+Sql\+Table\+Model\+::select()) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table\+Name\mbox{[}in\mbox{]}} & Имя таблицы, для которой надо вернуть модель \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Q\+Sql\+Table\+Model Модель для использования в представлении \hyperlink{class_db_tables_view}{Db\+Tables\+View} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_db_manager_a56efe9d49dc68dcdef05ae834f7618b0}\label{class_db_manager_a56efe9d49dc68dcdef05ae834f7618b0}} 
+\index{Db\+Manager@{Db\+Manager}!get\+Tables@{get\+Tables}}
+\index{get\+Tables@{get\+Tables}!Db\+Manager@{Db\+Manager}}
+\subsubsection{\texorpdfstring{get\+Tables()}{getTables()}}
+{\footnotesize\ttfamily Q\+String\+List Db\+Manager\+::get\+Tables (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Возвращает таблицы 
+
+\begin{DoxyReturn}{Returns}
+Q\+String\+List 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_db_manager_a289f7f1c539781db95292c79fb13a632}\label{class_db_manager_a289f7f1c539781db95292c79fb13a632}} 
+\index{Db\+Manager@{Db\+Manager}!m\+\_\+db@{m\+\_\+db}}
+\index{m\+\_\+db@{m\+\_\+db}!Db\+Manager@{Db\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+db}{m\_db}}
+{\footnotesize\ttfamily Q\+Sql\+Database Db\+Manager\+::m\+\_\+db}
+
+T\+O\+DO\+: describe 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Db\+Manager.\+h\item 
+Db\+Manager.\+cpp\end{DoxyCompactItemize}

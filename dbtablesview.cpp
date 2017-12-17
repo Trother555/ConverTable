@@ -49,17 +49,3 @@ QVector<QSqlTableModel*> DbTablesView::getModels()
 {
     return models;
 }
-
-void DbTablesView::mouseReleaseEvent(QMouseEvent *event)
-{
-    if (event->button() == Qt::LeftButton)
-    {
-        emit click();
-    }
-}
-
-void DbTablesView::paintEvent(QPaintEvent *e)
-{
-    QWidget::paintEvent(e);
-
-}

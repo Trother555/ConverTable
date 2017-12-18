@@ -32,7 +32,9 @@ SOURCES += \
     SqlModelConverter.cpp \
     elementtype.cpp \
     csvtable.cpp \
-    DbNamesListView.cpp
+    DbNamesListView.cpp \
+    ToggleButton.cpp \
+    ButtonGroup.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -41,7 +43,9 @@ HEADERS += \
     SqlModelConverter.h \
     csvtable.h \
     elemettype.h \
-    DbNamesListView.h
+    DbNamesListView.h \
+    ToggleButton.h \
+    ButtonGroup.h
 
 FORMS += \
         mainwindow.ui

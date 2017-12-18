@@ -12,6 +12,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    /*ui->widget->setStyleSheet("QWidget{background-color:rgb(165, 165, 165);}"
+                              "QPushButton{background-color:rgb(165, 165, 165);}"
+                              "QPushButton#TabDatabase{background-image:url(:/buttons/png/data-base.png)}");*/
 
 }
 
@@ -19,6 +22,7 @@ MainWindow::~MainWindow()
 {
     ui->listWidget->Clear();
     ui->tabWidget->Clear();
+
     delete ui;
 }
 

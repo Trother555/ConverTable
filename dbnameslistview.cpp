@@ -31,9 +31,7 @@ void DbNamesListView::SetAndFetch(DbManager * dbManager)
 
 void DbNamesListView::Clear()
 {
-    QListWidgetItem *ptr;
-    while((ptr = this->item(0))!=nullptr)
-	delete ptr;
+    this->clear();
 }
 
 QStringList DbNamesListView::GetTablesToSave()

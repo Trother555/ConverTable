@@ -31,8 +31,11 @@ void DbTablesView::Clear()
 {
     models.clear();
     QWidget* w = nullptr;
-    while(w = this->widget(0))
-    {   delete ((QTableView*)w)->model();
+    while((w = this->widget(0)))
+    {
+	QTableView* tView = qobject_cast<QTableView*>(w);
+	if(tView!=nullptr)
+	    delete tView->model();
         delete w;
     }
 }

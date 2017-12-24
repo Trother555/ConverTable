@@ -2,4 +2,7 @@
     <qresource lang="all" prefix="/buttons">
         <file>png/data-base.png</file>
     </qresource>
+    <qresource lang="all" prefix="/database">
+        <file>Tests/mydatabase.sqlite</file>
+    </qresource>
 </RCC>

@@ -38,7 +38,8 @@ SOURCES += \
     DbNamesListView.cpp \
     ToggleButton.cpp \
     ButtonGroup.cpp \
-    Tests/test_test.cpp
+    Tests/test_test.cpp \
+    Tests/test_dbmanager.cpp
 
 HEADERS += \
 	mainwindow.h \
@@ -50,7 +51,8 @@ HEADERS += \
     DbNamesListView.h \
     ToggleButton.h \
     ButtonGroup.h \
-    Tests/test_test.h
+    Tests/test_test.h \
+    Tests/test_dbmanager.h
 
 FORMS += \
 	mainwindow.ui

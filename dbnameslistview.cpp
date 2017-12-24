@@ -20,6 +20,7 @@ void DbNamesListView::FetchTables()
 	it->setFlags(Qt::ItemIsEnabled|Qt::ItemIsUserCheckable);
 	it->setCheckState(Qt::Checked);
 	this->addItem(it);
+
     }
 }
 

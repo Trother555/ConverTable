@@ -9,10 +9,7 @@ QT	 += widgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 CONFIG += tests
-tests{
-    message(Configuring test build...)
-    QT += testlib
-}
+
     TARGET = ConverTable
     TEMPLATE = app
 # The following define makes your compiler emit warnings if you use
@@ -37,9 +34,7 @@ SOURCES += \
     csvtable.cpp \
     DbNamesListView.cpp \
     ToggleButton.cpp \
-    ButtonGroup.cpp \
-    Tests/test_test.cpp \
-    Tests/test_dbmanager.cpp
+    ButtonGroup.cpp
 
 HEADERS += \
 	mainwindow.h \
@@ -50,9 +45,7 @@ HEADERS += \
     elemettype.h \
     DbNamesListView.h \
     ToggleButton.h \
-    ButtonGroup.h \
-    Tests/test_test.h \
-    Tests/test_dbmanager.h
+    ButtonGroup.h
 
 FORMS += \
 	mainwindow.ui
@@ -61,3 +54,21 @@ DISTFILES +=
 
 RESOURCES += \
     res.qrc
+tests{
+    message(Configuring test build...)
+    QT += testlib
+
+    SOURCES -= main.cpp
+
+    SOURCES += \
+    Tests/test_test.cpp \
+    Tests/test_dbmanager.cpp \
+    Tests/test_dbnameslistview.cpp \
+    Tests/test_helpers.cpp
+
+    HEADERS += \
+    Tests/test_test.h \
+    Tests/test_dbmanager.h \
+    Tests/test_dbnameslistview.h \
+    Tests/test_helpers.h
+}

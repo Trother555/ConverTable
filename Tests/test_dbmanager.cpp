@@ -8,11 +8,11 @@ void Test_DbManager::managerFetchesCorrectTables()
 
     QString tempFile = createTempRes("mydatabase.sqlite", ":/database/Tests/mydatabase.sqlite", tempDir);
     QVERIFY2(tempFile != "", "Db failed to open");
-    DbManager dbm(tempFile);
-    auto tableNames = dbm.getTables();
+    DbManager* dbm = new DbManager(tempFile);
+    auto tableNames = dbm->getTables();
     QVERIFY(tableNames.contains("Product"));
     QVERIFY(tableNames.contains("Warehouse"));
-
+    delete dbm;
 }
 
 //QTEST_MAIN(Test_DbManager)

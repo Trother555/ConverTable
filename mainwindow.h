@@ -22,21 +22,21 @@ public:
 
 private slots:
 
-    void on_TabDatabase_clicked();
+    void onTabDatabaseClicked();
 
-    void on_TabCSV_clicked();
+    void onTabCSVClicked();
 
-    void on_TabExport_clicked();
+    void onTabExportClicked();
 
-    void on_TabSettings_clicked();
+    void onTabSettingsClicked();
 
-    void on_ButtonOpenNewDB_clicked();
+    void onButtonOpenNewDBClicked();
 
-    void on_ButtonExportDBtoCSV_clicked();
+    void onButtonExportDBtoCSVClicked();
 
-    void on_ButtonOpenNewCSV_clicked();
+    void onButtonOpenNewCSVClicked();
 
-    void on_ButtonSetCsvPath_clicked();
+    void onButtonSetCsvPathClicked();
 
 private:
     Ui::MainWindow *ui;

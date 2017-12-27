@@ -12,6 +12,23 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    connect(ui->ButtonOpenNewDB,SIGNAL(clicked(bool)), this,
+SLOT(onButtonOpenNewDBClicked()));
+
+    connect(ui->ButtonOpenNewCSV,SIGNAL(clicked(bool)), this, SLOT(onButtonOpenNewCSVClicked()));
+
+    connect(ui->ButtonExportDBtoCSV,SIGNAL(clicked(bool)), this, SLOT(onButtonExportDBtoCSVClicked()));
+
+    connect(ui->ButtonSetCsvPath,SIGNAL(clicked(bool)), this, SLOT(onButtonSetCsvPathClicked()));
+
+    connect(ui->TabCSV,SIGNAL(clicked(bool)), this, SLOT(onTabCSVClicked()));
+
+    connect(ui->TabDatabase,SIGNAL(clicked(bool)), this, SLOT(onTabDatabaseClicked()));
+
+    connect(ui->TabExport,SIGNAL(clicked(bool)), this, SLOT(onTabExportClicked()));
+
+    connect(ui->TabSettings,SIGNAL(clicked(bool)), this, SLOT(onTabSettingsClicked()));
     /*ui->widget->setStyleSheet("QWidget{background-color:rgb(165, 165, 165);}"
                               "QPushButton{background-color:rgb(165, 165, 165);}"
                               "QPushButton#TabDatabase{background-image:url(:/buttons/png/data-base.png)}");*/
@@ -22,31 +39,32 @@ MainWindow::~MainWindow()
 {
     ui->listWidget->Clear();
     ui->tabWidget->Clear();
-
+    if(dbManager!=nullptr)
+        delete dbManager;
     delete ui;
 }
 
-void MainWindow::on_TabDatabase_clicked()
+void MainWindow::onTabDatabaseClicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
 }
 
-void MainWindow::on_TabCSV_clicked()
+void MainWindow::onTabCSVClicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
 }
 
-void MainWindow::on_TabExport_clicked()
+void MainWindow::onTabExportClicked()
 {
     ui->stackedWidget->setCurrentIndex(2);
 }
 
-void MainWindow::on_TabSettings_clicked()
+void MainWindow::onTabSettingsClicked()
 {
     ui->stackedWidget->setCurrentIndex(3);
 }
 
-void MainWindow::on_ButtonOpenNewDB_clicked()
+void MainWindow::onButtonOpenNewDBClicked()
 {
     if(dbWasLoad)
     {
@@ -71,7 +89,7 @@ void MainWindow::on_ButtonOpenNewDB_clicked()
     dbWasLoad = true;
 }
 
-void MainWindow::on_ButtonExportDBtoCSV_clicked()
+void MainWindow::onButtonExportDBtoCSVClicked()
 {
     if(!dbWasLoad)
     {
@@ -94,7 +112,7 @@ void MainWindow::on_ButtonExportDBtoCSV_clicked()
     }
 }
 
-void MainWindow::on_ButtonSetCsvPath_clicked()
+void MainWindow::onButtonSetCsvPathClicked()
 {
     QFileDialog dialog;
     dialog.setFileMode(QFileDialog::Directory);
@@ -103,7 +121,7 @@ void MainWindow::on_ButtonSetCsvPath_clicked()
     converter.options.setPath(dialog.selectedFiles()[0]);
 }
 
-void MainWindow::on_ButtonOpenNewCSV_clicked()
+void MainWindow::onButtonOpenNewCSVClicked()
 {
     if(csvWasLoad)
     {

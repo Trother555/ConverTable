@@ -25,7 +25,7 @@ public:
       *
       * @param модель
       */
-    void SetModel(DbModel * dbModel);
+    void SetModel(AbstractDbModel * dbModel);
     /**
      * @brief Очищает ресурсы, выделенные представлению
      *

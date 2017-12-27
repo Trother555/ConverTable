@@ -5,7 +5,7 @@ DbNamesListView::DbNamesListView(QWidget* p):QListWidget(p)
 
 }
 
-void DbNamesListView::SetModel(DbModel * dbModel)
+void DbNamesListView::SetModel(AbstractDbModel * dbModel)
 {
     for(QSqlTableModel* tableModel : dbModel->getModels())
     {

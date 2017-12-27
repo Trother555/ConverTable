@@ -2,11 +2,12 @@
 #define DBMODEL_H
 #include "DbManager.h"
 #include <QtSql>
+#include "AbstractDbModel.h"
 /**
  * @brief Модель базы данных
  *
  */
-class DbModel : QObject
+class DbModel : QObject, public AbstractDbModel
 {
     Q_OBJECT
     QVector<QSqlTableModel*> models;

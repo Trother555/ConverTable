@@ -9,7 +9,7 @@ DbTablesView::DbTablesView(QWidget*& p):QTabWidget(p)
 
 }
 
-void DbTablesView::SetModel(DbModel * dbModel)
+void DbTablesView::SetModel(AbstractDbModel * dbModel)
 {
     for(QSqlTableModel* tableModel : dbModel->getModels())
     {

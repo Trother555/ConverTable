@@ -35,7 +35,8 @@ SOURCES += \
     DbNamesListView.cpp \
     ToggleButton.cpp \
     ButtonGroup.cpp \
-    DbModel.cpp
+    DbModel.cpp \
+    AbstractDbModel.cpp
 
 HEADERS += \
 	mainwindow.h \
@@ -47,7 +48,8 @@ HEADERS += \
     DbNamesListView.h \
     ToggleButton.h \
     ButtonGroup.h \
-    DbModel.h
+    DbModel.h \
+    AbstractDbModel.h
 
 FORMS += \
 	mainwindow.ui

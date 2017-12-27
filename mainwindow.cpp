@@ -1,10 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "DbManager.h"
+#include "CsvManager.h"
 #include "DbTablesView.h"
 #include <QFileDialog>
 #include <QLabel>
-#include "csvtable.h"
+#include "CSVTableModel.h"
 #include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -12,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    csvTableModel = new CSVTableModel();
     /*ui->widget->setStyleSheet("QWidget{background-color:rgb(165, 165, 165);}"
                               "QPushButton{background-color:rgb(165, 165, 165);}"
                               "QPushButton#TabDatabase{background-image:url(:/buttons/png/data-base.png)}");*/
@@ -48,7 +50,7 @@ void MainWindow::on_TabSettings_clicked()
 
 void MainWindow::on_ButtonOpenNewDB_clicked()
 {
-    if(dbWasLoad)
+    if(TableWasLoad)
     {
         auto q = QMessageBox::question(this,
             "Closing db", "This will close currently open db. Do you want to continue?",
@@ -57,22 +59,22 @@ void MainWindow::on_ButtonOpenNewDB_clicked()
             return;
         ui->tabWidget->Clear();
         ui->listWidget->Clear();
-        dbWasLoad = false;
+        TableWasLoad = false;
     }
     QString dbFileName = QFileDialog::getOpenFileName(this, "Db file", "", "SQLite files (*.sqlite)");
-    if(dbManager!=nullptr)
-        delete dbManager;
-    dbManager = new DbManager(dbFileName);
+    if(manager!=nullptr)
+        delete manager;
+    manager = new DbManager(dbFileName);
     //Заполнить представление для таблиц бд
-    ui->tabWidget->SetAndFetch(dbManager);
+    ui->tabWidget->SetAndFetch(manager);
     //Заполнить представление для списка таблиц с выбором таблиц на импорт
-    ui->listWidget->SetAndFetch(dbManager);
-    dbWasLoad = true;
+    ui->listWidget->SetAndFetch(manager);
+    TableWasLoad = true;
 }
 
 void MainWindow::on_ButtonExportDBtoCSV_clicked()
 {
-    if(!dbWasLoad)
+    if(!TableWasLoad)
     {
         QMessageBox::warning(this,"Error","Db was not load");
         return;
@@ -104,13 +106,50 @@ void MainWindow::on_ButtonSetCsvPath_clicked()
 
 void MainWindow::on_ButtonOpenNewCSV_clicked()
 {
+    /*ui->tabWidget->setModel(csvTableModel);
+
     if(csvWasLoad)
     {
-        ui->TableCSV->clear();
-        dbWasLoad = false;
+        auto q = QMessageBox::question(this,
+            "Closing db", "This will close currently open db. Do you want to continue?",
+            QMessageBox::Yes|QMessageBox::No);
+        if(q == QMessageBox::No)
+            return;
+        csvWasLoad = false;
     }
-    /*QString dbFileName = QFileDialog::getOpenFileName(this, "Файл базы данных", "", "SQLite files (*.sqlite)");
-    ui->tabWidget->SetDbAndFetch(new DbManager(dbFileName));
-    dbWasLoad = true;
-    CSVTable table;*/
+    QStringList csvFileNames = QFileDialog::getOpenFileNames(this, "CSV file", "", "CSV files (*.csv)");
+
+    if (csvFileNames.isEmpty())
+    {
+        csvWasLoad = false;
+        return;
+    }
+    for (const QString& x : csvFileNames)
+    {
+
+    }
+    csvTableModel->readFromFile(csvFileName, ",");
+    csvWasLoad = true;*/
+    //ui->tabWidget->setModel(csvTableModel);
+
+    if(TableWasLoad)
+    {
+        auto q = QMessageBox::question(this,
+            "Closing csv", "This will close currently open csv. Do you want to continue?",
+            QMessageBox::Yes|QMessageBox::No);
+        if(q == QMessageBox::No)
+            return;
+        TableWasLoad = false;
+    }
+    QStringList csvFileNames = QFileDialog::getOpenFileNames(this, "CSV file", "", "CSV files (*.csv)");
+
+    if(manager!=nullptr)
+        delete manager;
+
+    manager = new CsvManager(csvFileNames);
+    //Заполнить представление для таблиц csv
+    ui->tabWidget->SetAndFetch(manager);
+    //Заполнить представление для списка таблиц с выбором таблиц на импорт
+    ui->listWidget->SetAndFetch(manager);
+    TableWasLoad = true;
 }

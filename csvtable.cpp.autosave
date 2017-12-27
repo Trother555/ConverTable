@@ -1,0 +1,114 @@
+#include "CSVTable.h"
+#include "CSVTable.h"
+#include <QFile>
+
+
+
+
+QStringList CSVTableModel::splitRow(const QByteArray &row, const QString& sep)
+{
+    return ((QString)row).split(sep);
+}
+
+
+ErrorCode CSVTableModel::readFromFile(const QString &filename, const QString &sep)
+{
+    if (this->rowCount() != 0)
+    {
+        emit beginResetModel();
+
+        //Проверить на утечки памяти!
+        while(rowCount() >= 0)
+        {
+            removeRow(0);
+        }
+
+        emit endResetModel();
+        //emit layoutChanged();
+    }
+
+    if (!columnTypes.empty())
+    {
+        columnTypes.clear();
+    }
+
+    QFile file(filename);
+
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+        return ErrorCode::NO_SUCH_FILE;
+
+    if (!file.atEnd())
+    {
+        QStringList columnNames = splitRow(file.readLine(), sep);
+
+        for (int i=0; i<columnNames.count(); ++i)
+        {
+            if (!setHeaderData(i, Qt::Orientation::Horizontal, columnNames[i], Qt::EditRole))
+            {
+                return ErrorCode::HEADER_ERROR;
+            }
+        }
+
+        //columnCount = columnNames.count();
+        columnTypes.fill(ElementType::INT, columnCount);
+    }
+
+
+    while (!file.atEnd())
+    {
+        QStringList row = splitRow(file.readLine(), sep);
+
+        if (columnCount != row.count())
+        {
+            file.close();
+            return ErrorCode::UNEQUAL_COLUMN_COUNT;
+        }
+
+        for (int i = 0; i < row.count(); ++i)
+        {
+            ElementType type = getType(x);
+
+            //Типы введены так:
+            //INT = 0
+            //DOUBLE = 1
+            //STRING = 2
+            //Если тип элемента столбца в текущей строке больше, чем тип предыдущих
+            //элементов этого столбца, то нужно изменить тип всего столбца
+            if (type > columnTypes[i])
+            {
+                columnTypes[i] = type;
+            }
+        }
+
+        emit beginInsertRows(QModelIndex(), rowCount(),rowCount()+1);
+
+        if (!insertRow(rowCount()))
+        {
+            emit endInsertRows();
+            return ErrorCode::INSERT_ROW_ERROR;
+        }
+
+        int lastRow = rowCount()-1;
+        for (int j=0; j<columnCount(); ++j)
+        {
+            if (!this->setData(index(lastRow,j), row[i]))
+            {
+                emit endInsertRows();
+                return ErrorCode::SET_DATA_ERROR;
+            }
+        }
+
+        emit endInsertRows();
+
+        ++rowCount;
+    }
+
+    return ErrorCode::NO_ERROR;
+}
+
+
+
+/*QStringList CSVTable::splitRow(const QByteArray &row, const QString &sep)
+{
+    this->
+}

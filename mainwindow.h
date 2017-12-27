@@ -1,9 +1,10 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-#include "DbManager.h"
+#include "AbstractManager.h"
 #include <QMainWindow>
 #include <QSqlTableModel>
 #include "SqlModelConverter.h"
+#include "CSVTableModel.h"
 
 namespace Ui {
 class MainWindow;
@@ -15,8 +16,8 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
-    DbManager* mngr = nullptr;
-    QSqlTableModel* mdl = nullptr;
+    //DbManager* mngr = nullptr;
+    //QSqlTableModel* mdl = nullptr;
     ~MainWindow();
 
 private slots:
@@ -39,10 +40,11 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    bool dbWasLoad = false;
-    bool csvWasLoad = false;
+    bool TableWasLoad = false;
     SqlModelConverter converter;
-    DbManager* dbManager = nullptr;
+    AbstractManager* manager = nullptr;
+
+    CSVTableModel *csvTableModel;
 };
 
 #endif // MAINWINDOW_H

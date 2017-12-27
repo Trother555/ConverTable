@@ -8,7 +8,7 @@ DbTablesView::DbTablesView(QWidget*& p):QTabWidget(p)
 
 }
 
-void DbTablesView::SetDbManager(DbManager * dbManager)
+void DbTablesView::SetDbManager(AbstractManager *dbManager)
 {
     m_dbm = dbManager;
 }
@@ -40,7 +40,7 @@ void DbTablesView::Clear()
     }
 }
 
-void DbTablesView::SetAndFetch(DbManager* dbManager)
+void DbTablesView::SetAndFetch(AbstractManager *dbManager)
 {
     m_dbm = dbManager;
     this->FetchTables();

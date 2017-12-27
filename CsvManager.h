@@ -1,30 +1,31 @@
-#ifndef DbManager_H
-#define DbManager_H
+#ifndef CsvManager_H
+#define CsvManager_H
 
 #include <QtSql>
-#include <AbstractManager.h>
+#include <CSVTableModel.h>
+#include "AbstractManager.h"
 
 /**
  * @brief Класс для работы с базой данных.
  * Содержит минимальный набор функций для работы с бд.
  *
  */
-class DbManager: public AbstractManager
+class CsvManager: public AbstractManager
 {
 
 public:
     /**
      * @brief
      *
-     * @param[in] path Путь к базе данных
+     * @param[in] pathList Список путей к csv-файлам
      */
-    DbManager(const QString& path);
+    CsvManager(const QStringList& pathList);
 
     /**
-     * @briefВозвращает модель таблицы tableName, вызывая select() (см. QSqlTableModel::select())
+     * @brief Возвращает модель таблицы tableName, вызывая select() (см. QSqlTableModel::select())
      *
      * @param tableName[in] Имя таблицы, для которой надо вернуть модель
-     * @return QSqlTableModel Модель для использования в представлении DbTablesView
+     * @return QSqlTableModel Модель для использования в представлении CsvTablesView
      */
     QSqlTableModel* getModel(const QString &tableName);
 
@@ -38,10 +39,10 @@ public:
      * @brief Возвращает список с именами таблиц.
      *
      */
-    ~DbManager();
+    ~CsvManager();
 
 //private:
-    QSqlDatabase m_db; /**< TODO: describe */
+    QMap<QString, CSVTableModel*> csvTables; /**< TODO: describe */
 };
 
-#endif // DbManager_H
+#endif // CsvManager_H

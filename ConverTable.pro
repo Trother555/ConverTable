@@ -31,21 +31,24 @@ SOURCES += \
     DbTablesView.cpp \
     SqlModelConverter.cpp \
     elementtype.cpp \
-    csvtable.cpp \
     DbNamesListView.cpp \
     ToggleButton.cpp \
-    ButtonGroup.cpp
+    ButtonGroup.cpp \
+    CSVTableModel.cpp \
+    CsvManager.cpp
 
 HEADERS += \
         mainwindow.h \
     DbManager.h \
     DbTablesView.h \
     SqlModelConverter.h \
-    csvtable.h \
     elemettype.h \
     DbNamesListView.h \
     ToggleButton.h \
-    ButtonGroup.h
+    ButtonGroup.h \
+    CSVTableModel.h \
+    CsvManager.h \
+    AbstractManager.h
 
 FORMS += \
         mainwindow.ui

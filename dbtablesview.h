@@ -2,7 +2,7 @@
 #define DBTABLESVIEW_H
 #include <QWidget>
 #include <QTabWidget>
-#include "DbManager.h"
+#include "AbstractManager.h"
 #include <QtSql>
 
 /**
@@ -13,7 +13,7 @@ class DbTablesView : public QTabWidget
 {
     Q_OBJECT
 private:
-    DbManager* m_dbm = NULL; /**< TODO: describe */
+    AbstractManager* m_dbm = NULL; /**< TODO: describe */
     QVector<QSqlTableModel*> models; /**< TODO: describe */
 public:
     /**
@@ -27,7 +27,7 @@ public:
      *
      * @param[in] Указатель на менеджер бд
      */
-    void SetDbManager(DbManager*);
+    void SetDbManager(AbstractManager*);
     /**
      * @brief Загружает таблицы из предоставленного DbManager
      *
@@ -43,7 +43,7 @@ public:
      *
      * @param[in] Указатель на менеджер бд
      */
-    void SetAndFetch(DbManager*);
+    void SetAndFetch(AbstractManager*);
     /**
      * @brief Возвращает модели таблтц в бд
      *

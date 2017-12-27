@@ -5,7 +5,7 @@ DbNamesListView::DbNamesListView(QWidget* p):QListWidget(p)
 
 }
 
-void DbNamesListView::SetDbManager(DbManager * dbManager)
+void DbNamesListView::SetDbManager(AbstractManager *dbManager)
 {
     m_dbm = dbManager;
 }
@@ -23,7 +23,7 @@ void DbNamesListView::FetchTables()
     }
 }
 
-void DbNamesListView::SetAndFetch(DbManager * dbManager)
+void DbNamesListView::SetAndFetch(AbstractManager * dbManager)
 {
     SetDbManager(dbManager);
     FetchTables();

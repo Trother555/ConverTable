@@ -10,7 +10,7 @@ SqlModelConverter::SqlModelConverter(ConverterOptions opts)
     options = opts;
 }
 
-void SqlModelConverter::sqlToCsv(const QVector<QSqlTableModel*> &models, const QStringList &tablesToConvert, QHash<QString, QString>& result)
+void SqlModelConverter::sqlToCsv(const QVector<QSqlTableModel*> &&models, const QStringList &tablesToConvert, QHash<QString, QString>& result)
 {
     //цикл по всем таблицам из бд
     for(int i = 0; i<models.size();i++)

@@ -5,18 +5,12 @@ DbNamesListView::DbNamesListView(QWidget* p):QListWidget(p)
 
 }
 
-void DbNamesListView::SetDbManager(DbManager * dbManager)
+void DbNamesListView::SetModel(DbModel * dbModel)
 {
-    m_dbm = dbManager;
-}
-
-void DbNamesListView::FetchTables()
-{
-    //Set db list in settings
-    for(auto name:m_dbm->getTables())
+    for(QSqlTableModel* tableModel : dbModel->getModels())
     {
 	QListWidgetItem *it = new QListWidgetItem();
-	it->setText(name);
+	it->setText(tableModel->tableName());
 	it->setFlags(Qt::ItemIsEnabled|Qt::ItemIsUserCheckable);
 	it->setCheckState(Qt::Checked);
 	this->addItem(it);
@@ -24,14 +18,11 @@ void DbNamesListView::FetchTables()
     }
 }
 
-void DbNamesListView::SetAndFetch(DbManager * dbManager)
-{
-    SetDbManager(dbManager);
-    FetchTables();
-}
-
 void DbNamesListView::Clear()
 {
+    QListWidgetItem * w = nullptr;
+    while((w = this->item(0))!=nullptr)
+	delete w;
     this->clear();
 }
 

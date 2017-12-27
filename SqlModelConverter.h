@@ -93,7 +93,7 @@ public:
      * @param tablesToConvert Список имён таблиц, для которых надо выполнить преобразование
      * @param result Словарь вида "Имя таблицы" - "содержимое соответствующего csv-файла"
      */
-    void sqlToCsv(const QVector<QSqlTableModel*> &models, const QStringList &tablesToConvert, QHash<QString, QString>& result);
+    void sqlToCsv(const QVector<QSqlTableModel*> &&models, const QStringList &tablesToConvert, QHash<QString, QString>& result);
     ConverterOptions options; /**< TODO: describe */
 };
 

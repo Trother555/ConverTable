@@ -8,7 +8,7 @@ QT       += core gui sql
 QT	 += widgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-CONFIG += tests
+#CONFIG += tests
 
     TARGET = ConverTable
     TEMPLATE = app
@@ -34,7 +34,8 @@ SOURCES += \
     csvtable.cpp \
     DbNamesListView.cpp \
     ToggleButton.cpp \
-    ButtonGroup.cpp
+    ButtonGroup.cpp \
+    DbModel.cpp
 
 HEADERS += \
 	mainwindow.h \
@@ -45,7 +46,8 @@ HEADERS += \
     elemettype.h \
     DbNamesListView.h \
     ToggleButton.h \
-    ButtonGroup.h
+    ButtonGroup.h \
+    DbModel.h
 
 FORMS += \
 	mainwindow.ui

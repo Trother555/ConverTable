@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QSqlTableModel>
 #include "SqlModelConverter.h"
+#include "dbmodel.h"
 
 namespace Ui {
 class MainWindow;
@@ -43,6 +44,7 @@ private:
     bool csvWasLoad = false;
     SqlModelConverter converter;
     DbManager* dbManager = nullptr;
+    DbModel* dbModel = nullptr;
 };
 
 #endif // MAINWINDOW_H

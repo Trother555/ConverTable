@@ -1,8 +1,9 @@
 #include "DbManager.h"
 
-DbManager::DbManager(const QString& path)
+DbManager::DbManager(const QString& path, QString &&connectionName)
 {
-    m_db = new QSqlDatabase(QSqlDatabase::addDatabase("QSQLITE","DefCon"));
+    conName = connectionName;
+    m_db = new QSqlDatabase(QSqlDatabase::addDatabase("QSQLITE",connectionName));
     m_db->setDatabaseName(path);
     if (!m_db->open())
     {
@@ -21,6 +22,7 @@ QSqlTableModel* DbManager::getModel(const QString &tableName)
     QSqlTableModel* tmpModel = new QSqlTableModel(NULL, *m_db);
     tmpModel->setTable(tableName);
     tmpModel->select();
+    models.push_back(tmpModel);
     return tmpModel;
 }
 
@@ -31,7 +33,12 @@ QStringList DbManager::getTables()
 
 DbManager::~DbManager()
 {
+    qDebug()<<"Deliting db manager and closing connection";
+    for(auto&model:models)
+    {
+        delete model;
+    }
     m_db->close();
     delete m_db;
-    QSqlDatabase::removeDatabase("DefCon");
+    QSqlDatabase::removeDatabase(conName);
 }

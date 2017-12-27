@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['sqlmodelconverter',['SqlModelConverter',['../class_sql_model_converter.html',1,'']]]
+  ['dbmanager',['DbManager',['../class_db_manager.html',1,'']]],
+  ['dbmodel',['DbModel',['../class_db_model.html',1,'']]],
+  ['dbnameslistview',['DbNamesListView',['../class_db_names_list_view.html',1,'']]],
+  ['dbtablesview',['DbTablesView',['../class_db_tables_view.html',1,'']]]
 ];

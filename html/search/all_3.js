@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['getdelim',['getDelim',['../class_converter_options.html#ae2e25968130d28b79bc5bd1ae399a343',1,'ConverterOptions']]],
-  ['getendofline',['getEndOfLine',['../class_converter_options.html#aceb1c916ae42c07a21962b8bd0796540',1,'ConverterOptions']]],
-  ['getmodel',['getModel',['../class_db_manager.html#a4b9a7828f0d6e53b695da5168570653c',1,'DbManager']]],
-  ['getmodels',['getModels',['../class_db_tables_view.html#adfe2d826189cb96dba5e8c4908911141',1,'DbTablesView']]],
-  ['getpath',['getPath',['../class_converter_options.html#a8707c21da7c05009d27812ebe3b14c05',1,'ConverterOptions']]],
-  ['gettables',['getTables',['../class_db_manager.html#a56efe9d49dc68dcdef05ae834f7618b0',1,'DbManager']]]
+  ['dbmanager',['DbManager',['../class_db_manager.html',1,'DbManager'],['../class_db_manager.html#acae386f0fc2af5d3f3b5c2adc5226391',1,'DbManager::DbManager()']]],
+  ['dbmodel',['DbModel',['../class_db_model.html',1,'DbModel'],['../class_db_model.html#ae102f26485df0f84f97132e7f2066771',1,'DbModel::DbModel()']]],
+  ['dbnameslistview',['DbNamesListView',['../class_db_names_list_view.html',1,'DbNamesListView'],['../class_db_names_list_view.html#acd95e819ffa36f121ade61a0a776521d',1,'DbNamesListView::DbNamesListView()']]],
+  ['dbtablesview',['DbTablesView',['../class_db_tables_view.html',1,'DbTablesView'],['../class_db_tables_view.html#a822d3b44cd293111709021a5f6d6799d',1,'DbTablesView::DbTablesView()']]]
 ];

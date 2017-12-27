@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7edbmanager',['~DbManager',['../class_db_manager.html#ac5cdf8e5e932d1681ab807d8f256374c',1,'DbManager']]]
+  ['togglebutton',['ToggleButton',['../class_toggle_button.html#abf137e4fb0e825ae60e01dc0056f4224',1,'ToggleButton']]]
 ];

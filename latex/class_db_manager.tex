@@ -9,13 +9,19 @@
 
 {\ttfamily \#include $<$Db\+Manager.\+h$>$}
 
+Inheritance diagram for Db\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_db_manager}
+\end{center}
+\end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_db_manager_a449b4cc451c4ec493345d799891e7eaa}{Db\+Manager} (const Q\+String \&path)
+\hyperlink{class_db_manager_acae386f0fc2af5d3f3b5c2adc5226391}{Db\+Manager} (const Q\+String \&path, Q\+String \&\&connection\+Name=\char`\"{}Default\char`\"{})
 \item 
 Q\+Sql\+Table\+Model $\ast$ \hyperlink{class_db_manager_a4b9a7828f0d6e53b695da5168570653c}{get\+Model} (const Q\+String \&table\+Name)
-\begin{DoxyCompactList}\small\item\em Возвращает модель таблицы table\+Name, вызывая select() (см. Q\+Sql\+Table\+Model\+::select()) \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Возвращает модель таблицы table\+Name, вызывая select() (см. Q\+Sql\+Table\+Model\+::select()) Удалять указатели не надо, они будут удалены при удалении менеджера бд \end{DoxyCompactList}\item 
 Q\+String\+List \hyperlink{class_db_manager_a56efe9d49dc68dcdef05ae834f7618b0}{get\+Tables} ()
 \begin{DoxyCompactList}\small\item\em Возвращает таблицы \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_db_manager_ac5cdf8e5e932d1681ab807d8f256374c}\label{class_db_manager_ac5cdf8e5e932d1681ab807d8f256374c}} 
@@ -24,7 +30,8 @@ Q\+String\+List \hyperlink{class_db_manager_a56efe9d49dc68dcdef05ae834f7618b0}{g
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-Q\+Sql\+Database \hyperlink{class_db_manager_a289f7f1c539781db95292c79fb13a632}{m\+\_\+db}
+\mbox{\Hypertarget{class_db_manager_ad6b171f12dfc576b61c0c77bb7965285}\label{class_db_manager_ad6b171f12dfc576b61c0c77bb7965285}} 
+Q\+Sql\+Database $\ast$ {\bfseries m\+\_\+db}
 \end{DoxyCompactItemize}
 
 
@@ -32,15 +39,17 @@ Q\+Sql\+Database \hyperlink{class_db_manager_a289f7f1c539781db95292c79fb13a632}{
 Класс для работы с базой данных. Содержит минимальный набор функций для работы с бд. 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_db_manager_a449b4cc451c4ec493345d799891e7eaa}\label{class_db_manager_a449b4cc451c4ec493345d799891e7eaa}} 
+\mbox{\Hypertarget{class_db_manager_acae386f0fc2af5d3f3b5c2adc5226391}\label{class_db_manager_acae386f0fc2af5d3f3b5c2adc5226391}} 
 \index{Db\+Manager@{Db\+Manager}!Db\+Manager@{Db\+Manager}}
 \index{Db\+Manager@{Db\+Manager}!Db\+Manager@{Db\+Manager}}
 \subsubsection{\texorpdfstring{Db\+Manager()}{DbManager()}}
-{\footnotesize\ttfamily Db\+Manager\+::\+Db\+Manager (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{path }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Db\+Manager\+::\+Db\+Manager (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{path,  }\item[{Q\+String \&\&}]{connection\+Name = {\ttfamily \char`\"{}Default\char`\"{}} }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em path} & Путь к базе данных \\
+\mbox{\tt in}  & {\em path} & Путь к базе данных\\
+\hline
+\mbox{\tt in}  & {\em connection\+Name} & Имя подключения к бд \\
 \hline
 \end{DoxyParams}
 
@@ -54,7 +63,7 @@ Q\+Sql\+Database \hyperlink{class_db_manager_a289f7f1c539781db95292c79fb13a632}{
 
 
 
-Возвращает модель таблицы table\+Name, вызывая select() (см. Q\+Sql\+Table\+Model\+::select()) 
+Возвращает модель таблицы table\+Name, вызывая select() (см. Q\+Sql\+Table\+Model\+::select()) Удалять указатели не надо, они будут удалены при удалении менеджера бд 
 
 
 \begin{DoxyParams}{Parameters}
@@ -78,15 +87,6 @@ Q\+Sql\+Table\+Model Модель для использования в пред�
 Q\+String\+List 
 \end{DoxyReturn}
 
-
-\subsection{Member Data Documentation}
-\mbox{\Hypertarget{class_db_manager_a289f7f1c539781db95292c79fb13a632}\label{class_db_manager_a289f7f1c539781db95292c79fb13a632}} 
-\index{Db\+Manager@{Db\+Manager}!m\+\_\+db@{m\+\_\+db}}
-\index{m\+\_\+db@{m\+\_\+db}!Db\+Manager@{Db\+Manager}}
-\subsubsection{\texorpdfstring{m\+\_\+db}{m\_db}}
-{\footnotesize\ttfamily Q\+Sql\+Database Db\+Manager\+::m\+\_\+db}
-
-T\+O\+DO\+: describe 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

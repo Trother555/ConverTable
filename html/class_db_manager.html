@@ -71,13 +71,21 @@ $(function() {
  <a href="class_db_manager.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_db_manager_8h_source.html">DbManager.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for DbManager:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_db_manager.png" usemap="#DbManager_map" alt=""/>
+  <map id="DbManager_map" name="DbManager_map">
+</map>
+ </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a449b4cc451c4ec493345d799891e7eaa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_db_manager.html#a449b4cc451c4ec493345d799891e7eaa">DbManager</a> (const QString &amp;path)</td></tr>
-<tr class="separator:a449b4cc451c4ec493345d799891e7eaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acae386f0fc2af5d3f3b5c2adc5226391"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_db_manager.html#acae386f0fc2af5d3f3b5c2adc5226391">DbManager</a> (const QString &amp;path, QString &amp;&amp;connectionName=&quot;Default&quot;)</td></tr>
+<tr class="separator:acae386f0fc2af5d3f3b5c2adc5226391"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b9a7828f0d6e53b695da5168570653c"><td class="memItemLeft" align="right" valign="top">QSqlTableModel *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_db_manager.html#a4b9a7828f0d6e53b695da5168570653c">getModel</a> (const QString &amp;tableName)</td></tr>
-<tr class="memdesc:a4b9a7828f0d6e53b695da5168570653c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает модель таблицы tableName, вызывая select() (см. QSqlTableModel::select())  <a href="#a4b9a7828f0d6e53b695da5168570653c">More...</a><br /></td></tr>
+<tr class="memdesc:a4b9a7828f0d6e53b695da5168570653c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает модель таблицы tableName, вызывая select() (см. QSqlTableModel::select()) Удалять указатели не надо, они будут удалены при удалении менеджера бд  <a href="#a4b9a7828f0d6e53b695da5168570653c">More...</a><br /></td></tr>
 <tr class="separator:a4b9a7828f0d6e53b695da5168570653c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56efe9d49dc68dcdef05ae834f7618b0"><td class="memItemLeft" align="right" valign="top">QStringList&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_db_manager.html#a56efe9d49dc68dcdef05ae834f7618b0">getTables</a> ()</td></tr>
 <tr class="memdesc:a56efe9d49dc68dcdef05ae834f7618b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает таблицы  <a href="#a56efe9d49dc68dcdef05ae834f7618b0">More...</a><br /></td></tr>
@@ -89,14 +97,15 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a289f7f1c539781db95292c79fb13a632"><td class="memItemLeft" align="right" valign="top">QSqlDatabase&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_db_manager.html#a289f7f1c539781db95292c79fb13a632">m_db</a></td></tr>
-<tr class="separator:a289f7f1c539781db95292c79fb13a632"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6b171f12dfc576b61c0c77bb7965285"><td class="memItemLeft" align="right" valign="top"><a id="ad6b171f12dfc576b61c0c77bb7965285"></a>
+QSqlDatabase *&#160;</td><td class="memItemRight" valign="bottom"><b>m_db</b></td></tr>
+<tr class="separator:ad6b171f12dfc576b61c0c77bb7965285"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Класс для работы с базой данных. Содержит минимальный набор функций для работы с бд. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a449b4cc451c4ec493345d799891e7eaa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a449b4cc451c4ec493345d799891e7eaa">&#9670;&nbsp;</a></span>DbManager()</h2>
+<a id="acae386f0fc2af5d3f3b5c2adc5226391"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acae386f0fc2af5d3f3b5c2adc5226391">&#9670;&nbsp;</a></span>DbManager()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -105,14 +114,25 @@ Public Attributes</h2></td></tr>
           <td class="memname">DbManager::DbManager </td>
           <td>(</td>
           <td class="paramtype">const QString &amp;&#160;</td>
-          <td class="paramname"><em>path</em></td><td>)</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">QString &amp;&amp;&#160;</td>
+          <td class="paramname"><em>connectionName</em> = <code>&quot;Default&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">path</td><td>Путь к базе данных </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">path</td><td>Путь к базе данных</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">connectionName</td><td>Имя подключения к бд </td></tr>
   </table>
   </dd>
 </dl>
@@ -136,14 +156,14 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Возвращает модель таблицы tableName, вызывая select() (см. QSqlTableModel::select()) </p>
+<p>Возвращает модель таблицы tableName, вызывая select() (см. QSqlTableModel::select()) Удалять указатели не надо, они будут удалены при удалении менеджера бд </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">tableName[in]</td><td>Имя таблицы, для которой надо вернуть модель </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>QSqlTableModel Модель для использования в представлении <a class="el" href="class_db_tables_view.html" title="Представление для бд. ">DbTablesView</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>QSqlTableModel Модель для использования в представлении <a class="el" href="class_db_tables_view.html" title="Представление для бд ">DbTablesView</a> </dd></dl>
 
 </div>
 </div>
@@ -164,22 +184,6 @@ Public Attributes</h2></td></tr>
 
 <p>Возвращает таблицы </p>
 <dl class="section return"><dt>Returns</dt><dd>QStringList </dd></dl>
-
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a289f7f1c539781db95292c79fb13a632"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a289f7f1c539781db95292c79fb13a632">&#9670;&nbsp;</a></span>m_db</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">QSqlDatabase DbManager::m_db</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>TODO: describe </p>
 
 </div>
 </div>

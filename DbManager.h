@@ -46,7 +46,7 @@ public:
     ~DbManager();
 
 //private:
-    QSqlDatabase* m_db; /**< TODO: describe */
+    QSqlDatabase* m_db;
 };
 
 #endif // DbManager_H

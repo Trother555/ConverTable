@@ -1,0 +1,67 @@
+\hypertarget{class_db_model}{}\section{Db\+Model Class Reference}
+\label{class_db_model}\index{Db\+Model@{Db\+Model}}
+
+
+Модель базы данных  
+
+
+
+
+{\ttfamily \#include $<$Db\+Model.\+h$>$}
+
+Inheritance diagram for Db\+Model\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_db_model}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_db_model_ae102f26485df0f84f97132e7f2066771}{Db\+Model} (\hyperlink{class_db_manager}{Db\+Manager} $\ast$db)
+\item 
+const Q\+Vector$<$ Q\+Sql\+Table\+Model $\ast$ $>$ \hyperlink{class_db_model_aa185ea5bffa09016b3efb99591d173d3}{get\+Models} ()
+\begin{DoxyCompactList}\small\item\em Возвращает модели таблиц \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Модель базы данных 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_db_model_ae102f26485df0f84f97132e7f2066771}\label{class_db_model_ae102f26485df0f84f97132e7f2066771}} 
+\index{Db\+Model@{Db\+Model}!Db\+Model@{Db\+Model}}
+\index{Db\+Model@{Db\+Model}!Db\+Model@{Db\+Model}}
+\subsubsection{\texorpdfstring{Db\+Model()}{DbModel()}}
+{\footnotesize\ttfamily Db\+Model\+::\+Db\+Model (\begin{DoxyParamCaption}\item[{\hyperlink{class_db_manager}{Db\+Manager} $\ast$}]{db }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em db} & Менеджер бд. Будет удалён автоматически при удалении Model. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_db_model_aa185ea5bffa09016b3efb99591d173d3}\label{class_db_model_aa185ea5bffa09016b3efb99591d173d3}} 
+\index{Db\+Model@{Db\+Model}!get\+Models@{get\+Models}}
+\index{get\+Models@{get\+Models}!Db\+Model@{Db\+Model}}
+\subsubsection{\texorpdfstring{get\+Models()}{getModels()}}
+{\footnotesize\ttfamily const Q\+Vector$<$ Q\+Sql\+Table\+Model $\ast$ $>$ Db\+Model\+::get\+Models (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Возвращает модели таблиц 
+
+\begin{DoxyReturn}{Returns}
+const Q\+Vector$<$\+Q\+Sql\+Table\+Model $\ast$$>$ модели таблиц бд 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_abstract_db_model_aa0f683c2d6cc8d3018baaaba8b1bff9c}{Abstract\+Db\+Model}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Db\+Model.\+h\item 
+Db\+Model.\+cpp\end{DoxyCompactItemize}

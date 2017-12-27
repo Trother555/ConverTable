@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['m_5fdb',['m_db',['../class_db_manager.html#a289f7f1c539781db95292c79fb13a632',1,'DbManager']]]
+  ['options',['options',['../class_sql_model_converter.html#a562f55118cd1924c249796b6e183acbd',1,'SqlModelConverter']]]
 ];

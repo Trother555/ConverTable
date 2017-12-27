@@ -2,12 +2,12 @@
 \label{class_db_tables_view}\index{Db\+Tables\+View@{Db\+Tables\+View}}
 
 
-Представление для бд.  
+Представление для бд  
 
 
 
 
-{\ttfamily \#include $<$Db\+Tables\+View.\+h$>$}
+{\ttfamily \#include $<$dbtablesview.\+h$>$}
 
 Inheritance diagram for Db\+Tables\+View\+:\begin{figure}[H]
 \begin{center}
@@ -20,22 +20,15 @@ Inheritance diagram for Db\+Tables\+View\+:\begin{figure}[H]
 \item 
 \hyperlink{class_db_tables_view_a822d3b44cd293111709021a5f6d6799d}{Db\+Tables\+View} (Q\+Widget $\ast$\&)
 \begin{DoxyCompactList}\small\item\em Конструктор для преобразования(promotion) исходного класса qt. \end{DoxyCompactList}\item 
-void \hyperlink{class_db_tables_view_a0affcc4de194a59eff1ddbb68b88413e}{Set\+Db\+Manager} (\hyperlink{class_db_manager}{Db\+Manager} $\ast$)
-\begin{DoxyCompactList}\small\item\em Устанавливает менеджер бд \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_db_tables_view_a85801e58584abc223bccc924ad707ead}\label{class_db_tables_view_a85801e58584abc223bccc924ad707ead}} 
-void \hyperlink{class_db_tables_view_a85801e58584abc223bccc924ad707ead}{Fetch\+Tables} ()
-\begin{DoxyCompactList}\small\item\em Загружает таблицы из предоставленного \hyperlink{class_db_manager}{Db\+Manager}. \end{DoxyCompactList}\item 
+void \hyperlink{class_db_tables_view_a638f1465c40d9587c4146388dfee063b}{Set\+Model} (\hyperlink{class_abstract_db_model}{Abstract\+Db\+Model} $\ast$db\+Model)
+\begin{DoxyCompactList}\small\item\em Устанавливает модель данных для представления. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_db_tables_view_accf2ebff029e84812e48ca6564b392ef}\label{class_db_tables_view_accf2ebff029e84812e48ca6564b392ef}} 
 void \hyperlink{class_db_tables_view_accf2ebff029e84812e48ca6564b392ef}{Clear} ()
-\begin{DoxyCompactList}\small\item\em Очищает ресурсы, выделенные представлению \end{DoxyCompactList}\item 
-void \hyperlink{class_db_tables_view_ad3d7529bd0acc4d08fe0d60616e96599}{Set\+And\+Fetch} (\hyperlink{class_db_manager}{Db\+Manager} $\ast$)
-\begin{DoxyCompactList}\small\item\em Сокращение для Set\+Db\+Manager и Fetch\+Tables. \end{DoxyCompactList}\item 
-Q\+Vector$<$ Q\+Sql\+Table\+Model $\ast$ $>$ \hyperlink{class_db_tables_view_adfe2d826189cb96dba5e8c4908911141}{get\+Models} ()
-\begin{DoxyCompactList}\small\item\em Возвращает модели таблтц в бд \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Очищает ресурсы, выделенные представлению \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Представление для бд. 
+Представление для бд 
 
 \subsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{class_db_tables_view_a822d3b44cd293111709021a5f6d6799d}\label{class_db_tables_view_a822d3b44cd293111709021a5f6d6799d}} 
@@ -56,52 +49,24 @@ Q\+Vector$<$ Q\+Sql\+Table\+Model $\ast$ $>$ \hyperlink{class_db_tables_view_adf
 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{class_db_tables_view_adfe2d826189cb96dba5e8c4908911141}\label{class_db_tables_view_adfe2d826189cb96dba5e8c4908911141}} 
-\index{Db\+Tables\+View@{Db\+Tables\+View}!get\+Models@{get\+Models}}
-\index{get\+Models@{get\+Models}!Db\+Tables\+View@{Db\+Tables\+View}}
-\subsubsection{\texorpdfstring{get\+Models()}{getModels()}}
-{\footnotesize\ttfamily Q\+Vector$<$ Q\+Sql\+Table\+Model $\ast$ $>$ Db\+Tables\+View\+::get\+Models (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{class_db_tables_view_a638f1465c40d9587c4146388dfee063b}\label{class_db_tables_view_a638f1465c40d9587c4146388dfee063b}} 
+\index{Db\+Tables\+View@{Db\+Tables\+View}!Set\+Model@{Set\+Model}}
+\index{Set\+Model@{Set\+Model}!Db\+Tables\+View@{Db\+Tables\+View}}
+\subsubsection{\texorpdfstring{Set\+Model()}{SetModel()}}
+{\footnotesize\ttfamily void Db\+Tables\+View\+::\+Set\+Model (\begin{DoxyParamCaption}\item[{\hyperlink{class_abstract_db_model}{Abstract\+Db\+Model} $\ast$}]{db\+Model }\end{DoxyParamCaption})}
 
 
 
-Возвращает модели таблтц в бд 
-
-\begin{DoxyReturn}{Returns}
-Q\+Vector$<$\+Q\+Sql\+Table\+Model $\ast$$>$ 
-\end{DoxyReturn}
-\mbox{\Hypertarget{class_db_tables_view_ad3d7529bd0acc4d08fe0d60616e96599}\label{class_db_tables_view_ad3d7529bd0acc4d08fe0d60616e96599}} 
-\index{Db\+Tables\+View@{Db\+Tables\+View}!Set\+And\+Fetch@{Set\+And\+Fetch}}
-\index{Set\+And\+Fetch@{Set\+And\+Fetch}!Db\+Tables\+View@{Db\+Tables\+View}}
-\subsubsection{\texorpdfstring{Set\+And\+Fetch()}{SetAndFetch()}}
-{\footnotesize\ttfamily void Db\+Tables\+View\+::\+Set\+And\+Fetch (\begin{DoxyParamCaption}\item[{\hyperlink{class_db_manager}{Db\+Manager} $\ast$}]{db\+Manager }\end{DoxyParamCaption})}
+Устанавливает модель данных для представления. 
 
 
-
-Сокращение для Set\+Db\+Manager и Fetch\+Tables. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em Указатель} & на менеджер бд \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{class_db_tables_view_a0affcc4de194a59eff1ddbb68b88413e}\label{class_db_tables_view_a0affcc4de194a59eff1ddbb68b88413e}} 
-\index{Db\+Tables\+View@{Db\+Tables\+View}!Set\+Db\+Manager@{Set\+Db\+Manager}}
-\index{Set\+Db\+Manager@{Set\+Db\+Manager}!Db\+Tables\+View@{Db\+Tables\+View}}
-\subsubsection{\texorpdfstring{Set\+Db\+Manager()}{SetDbManager()}}
-{\footnotesize\ttfamily void Db\+Tables\+View\+::\+Set\+Db\+Manager (\begin{DoxyParamCaption}\item[{\hyperlink{class_db_manager}{Db\+Manager} $\ast$}]{db\+Manager }\end{DoxyParamCaption})}
-
-
-
-Устанавливает менеджер бд 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em Указатель} & на менеджер бд \\
+\begin{DoxyParams}{Parameters}
+{\em модель} & \\
 \hline
 \end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Db\+Tables\+View.\+h\item 
+dbtablesview.\+h\item 
 dbtablesview.\+cpp\end{DoxyCompactItemize}

@@ -66,10 +66,10 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Представление для бд.  
+<p>Представление для бд  
  <a href="class_db_tables_view.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="_db_tables_view_8h_source.html">DbTablesView.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="dbtablesview_8h_source.html">dbtablesview.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for DbTablesView:</div>
 <div class="dyncontent">
@@ -84,26 +84,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a822d3b44cd293111709021a5f6d6799d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_db_tables_view.html#a822d3b44cd293111709021a5f6d6799d">DbTablesView</a> (QWidget *&amp;)</td></tr>
 <tr class="memdesc:a822d3b44cd293111709021a5f6d6799d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Конструктор для преобразования(promotion) исходного класса qt.  <a href="#a822d3b44cd293111709021a5f6d6799d">More...</a><br /></td></tr>
 <tr class="separator:a822d3b44cd293111709021a5f6d6799d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0affcc4de194a59eff1ddbb68b88413e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_db_tables_view.html#a0affcc4de194a59eff1ddbb68b88413e">SetDbManager</a> (<a class="el" href="class_db_manager.html">DbManager</a> *)</td></tr>
-<tr class="memdesc:a0affcc4de194a59eff1ddbb68b88413e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает менеджер бд  <a href="#a0affcc4de194a59eff1ddbb68b88413e">More...</a><br /></td></tr>
-<tr class="separator:a0affcc4de194a59eff1ddbb68b88413e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85801e58584abc223bccc924ad707ead"><td class="memItemLeft" align="right" valign="top"><a id="a85801e58584abc223bccc924ad707ead"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_db_tables_view.html#a85801e58584abc223bccc924ad707ead">FetchTables</a> ()</td></tr>
-<tr class="memdesc:a85801e58584abc223bccc924ad707ead"><td class="mdescLeft">&#160;</td><td class="mdescRight">Загружает таблицы из предоставленного <a class="el" href="class_db_manager.html" title="Класс для работы с базой данных. Содержит минимальный набор функций для работы с бд. ">DbManager</a>. <br /></td></tr>
-<tr class="separator:a85801e58584abc223bccc924ad707ead"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a638f1465c40d9587c4146388dfee063b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_db_tables_view.html#a638f1465c40d9587c4146388dfee063b">SetModel</a> (<a class="el" href="class_abstract_db_model.html">AbstractDbModel</a> *dbModel)</td></tr>
+<tr class="memdesc:a638f1465c40d9587c4146388dfee063b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает модель данных для представления.  <a href="#a638f1465c40d9587c4146388dfee063b">More...</a><br /></td></tr>
+<tr class="separator:a638f1465c40d9587c4146388dfee063b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:accf2ebff029e84812e48ca6564b392ef"><td class="memItemLeft" align="right" valign="top"><a id="accf2ebff029e84812e48ca6564b392ef"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_db_tables_view.html#accf2ebff029e84812e48ca6564b392ef">Clear</a> ()</td></tr>
 <tr class="memdesc:accf2ebff029e84812e48ca6564b392ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Очищает ресурсы, выделенные представлению <br /></td></tr>
 <tr class="separator:accf2ebff029e84812e48ca6564b392ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3d7529bd0acc4d08fe0d60616e96599"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_db_tables_view.html#ad3d7529bd0acc4d08fe0d60616e96599">SetAndFetch</a> (<a class="el" href="class_db_manager.html">DbManager</a> *)</td></tr>
-<tr class="memdesc:ad3d7529bd0acc4d08fe0d60616e96599"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сокращение для SetDbManager и FetchTables.  <a href="#ad3d7529bd0acc4d08fe0d60616e96599">More...</a><br /></td></tr>
-<tr class="separator:ad3d7529bd0acc4d08fe0d60616e96599"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adfe2d826189cb96dba5e8c4908911141"><td class="memItemLeft" align="right" valign="top">QVector&lt; QSqlTableModel * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_db_tables_view.html#adfe2d826189cb96dba5e8c4908911141">getModels</a> ()</td></tr>
-<tr class="memdesc:adfe2d826189cb96dba5e8c4908911141"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает модели таблтц в бд  <a href="#adfe2d826189cb96dba5e8c4908911141">More...</a><br /></td></tr>
-<tr class="separator:adfe2d826189cb96dba5e8c4908911141"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Представление для бд. </p>
+<div class="textblock"><p>Представление для бд </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a822d3b44cd293111709021a5f6d6799d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a822d3b44cd293111709021a5f6d6799d">&#9670;&nbsp;</a></span>DbTablesView()</h2>
@@ -132,72 +122,26 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="adfe2d826189cb96dba5e8c4908911141"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adfe2d826189cb96dba5e8c4908911141">&#9670;&nbsp;</a></span>getModels()</h2>
+<a id="a638f1465c40d9587c4146388dfee063b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a638f1465c40d9587c4146388dfee063b">&#9670;&nbsp;</a></span>SetModel()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">QVector&lt; QSqlTableModel * &gt; DbTablesView::getModels </td>
+          <td class="memname">void DbTablesView::SetModel </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="class_abstract_db_model.html">AbstractDbModel</a> *&#160;</td>
+          <td class="paramname"><em>dbModel</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Возвращает модели таблтц в бд </p>
-<dl class="section return"><dt>Returns</dt><dd>QVector&lt;QSqlTableModel *&gt; </dd></dl>
-
-</div>
-</div>
-<a id="ad3d7529bd0acc4d08fe0d60616e96599"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad3d7529bd0acc4d08fe0d60616e96599">&#9670;&nbsp;</a></span>SetAndFetch()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void DbTablesView::SetAndFetch </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_db_manager.html">DbManager</a> *&#160;</td>
-          <td class="paramname"><em>dbManager</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Сокращение для SetDbManager и FetchTables. </p>
+<p>Устанавливает модель данных для представления. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">Указатель</td><td>на менеджер бд </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a0affcc4de194a59eff1ddbb68b88413e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0affcc4de194a59eff1ddbb68b88413e">&#9670;&nbsp;</a></span>SetDbManager()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void DbTablesView::SetDbManager </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_db_manager.html">DbManager</a> *&#160;</td>
-          <td class="paramname"><em>dbManager</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Устанавливает менеджер бд </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">Указатель</td><td>на менеджер бд </td></tr>
+    <tr><td class="paramname">модель</td><td></td></tr>
   </table>
   </dd>
 </dl>
@@ -205,7 +149,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="_db_tables_view_8h_source.html">DbTablesView.h</a></li>
+<li><a class="el" href="dbtablesview_8h_source.html">dbtablesview.h</a></li>
 <li>dbtablesview.cpp</li>
 </ul>
 </div><!-- contents -->

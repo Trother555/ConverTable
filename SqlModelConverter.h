@@ -3,6 +3,7 @@
 
 #include <QString>
 #include <QtSql>
+#include "CSVTableModel.h"
 
 /**
  * @brief Класс настроек конвертера SqlModelConverter
@@ -94,6 +95,7 @@ public:
      * @param result Словарь вида "Имя таблицы" - "содержимое соответствующего csv-файла"
      */
     void sqlToCsv(const QVector<QSqlTableModel*> &&models, const QStringList &tablesToConvert, QHash<QString, QString>& result);
+    void csvToSql(const QVector<QSqlTableModel *> &&models, const QStringList &tablesToConvert, QHash<QString, QString>& result);
     ConverterOptions options; /**< TODO: describe */
 };
 

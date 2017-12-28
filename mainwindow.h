@@ -5,6 +5,8 @@
 #include <QSqlTableModel>
 #include "SqlModelConverter.h"
 #include "dbmodel.h"
+#include "CsvModel.h"
+
 
 namespace Ui {
 class MainWindow;
@@ -24,7 +26,7 @@ private slots:
 
     void onTabDatabaseClicked();
 
-    void onTabCSVClicked();
+    //void onTabCSVClicked();
 
     void onTabExportClicked();
 
@@ -36,6 +38,8 @@ private slots:
 
     void onButtonOpenNewCSVClicked();
 
+    void onButtonExportCSVtoDBClicked();
+
     void onButtonSetCsvPathClicked();
 
 private:
@@ -45,6 +49,7 @@ private:
     SqlModelConverter converter;
     DbManager* dbManager = nullptr;
     DbModel* dbModel = nullptr;
+    CsvModel* csvModel = nullptr;
 };
 
 #endif // MAINWINDOW_H

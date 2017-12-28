@@ -11,6 +11,7 @@ enum ElementType
 };
 
 ElementType getType(QString val);
+QString getTypeString(ElementType type);
 
 
 #endif // ELEMETTYPE_H

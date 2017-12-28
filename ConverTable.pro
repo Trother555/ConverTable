@@ -8,7 +8,7 @@ QT       += core gui sql
 QT	 += widgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-#CONFIG += tests
+CONFIG += tests
 
     TARGET = ConverTable
     TEMPLATE = app
@@ -38,7 +38,8 @@ SOURCES += \
     DbModel.cpp \
     AbstractDbModel.cpp \
     CSVTableModel.cpp \
-    CsvModel.cpp
+    CsvModel.cpp \
+    Tests/test_converter.cpp
 
 HEADERS += \
 	mainwindow.h \
@@ -53,7 +54,8 @@ HEADERS += \
     DbModel.h \
     AbstractDbModel.h \
     CSVTableModel.h \
-    CsvModel.h
+    CsvModel.h \
+    Tests/test_converter.h
 
 FORMS += \
 	mainwindow.ui

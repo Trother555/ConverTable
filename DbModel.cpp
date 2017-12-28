@@ -6,7 +6,7 @@ DbModel::DbModel(DbManager* db)
     QStringList tableNames = db->getTables();
     for(const auto& tableName : tableNames)
     {
-	models.append(db->getModel(tableName));
+        models.push_back(db->getModel(tableName));
     }
 }
 
@@ -14,6 +14,17 @@ const QVector<QSqlTableModel*> DbModel::getModels()
 {
     return models;
 }
+
+const QStringList DbModel::getTableNames()
+{
+    QStringList result;
+    for(QSqlTableModel*m:models)
+    {
+        result.push_back(m->tableName());
+    }
+    return result;
+}
+
 
 DbModel::~DbModel()
 {

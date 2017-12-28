@@ -19,6 +19,7 @@ public:
      */
     DbModel(DbManager* db);
     const QVector<QSqlTableModel*> getModels();
+    QStringList getTableNames();
     ~DbModel();
 };
 

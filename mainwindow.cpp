@@ -50,16 +50,6 @@ void MainWindow::onTabDatabaseClicked()
     ui->stackedWidget->setCurrentIndex(0);
 }
 
-/*void MainWindow::onTabCSVClicked()
-{
-    ui->stackedWidget->setCurrentIndex(1);
-}*/
-
-//void MainWindow::onTabExportClicked()
-//{
-//    ui->stackedWidget->setCurrentIndex(1);
-//}
-
 void MainWindow::onTabSettingsClicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
@@ -88,11 +78,12 @@ void MainWindow::onButtonOpenNewDBClicked()
     //Заполнить представление для списка таблиц с выбором таблиц на импорт
     ui->listWidget->SetModel(dbModel);
     dbWasLoad = true;
+    loadDbType = true;
 }
 
 void MainWindow::onButtonExportDBtoCSVClicked()
 {
-    if(!dbWasLoad)
+    if(!dbWasLoad || !loadDbType)
     {
         QMessageBox::warning(this,"Error","Db was not load");
         return;
@@ -103,7 +94,7 @@ void MainWindow::onButtonExportDBtoCSVClicked()
     converter.sqlToCsv(dbModel->getModels(), tablesToSave, files);
     for(auto it = files.begin();it!=files.end();++it)
     {
-        QFile file(converter.options.getPath() + it.key());
+        QFile file(converter.options.getPath() + it.key() + ".csv");
         if(file.open(QIODevice::ReadWrite))
         {
             QTextStream stream( &file );
@@ -111,6 +102,7 @@ void MainWindow::onButtonExportDBtoCSVClicked()
         }
         file.close();
     }
+    QMessageBox::information(this,"Success","Db was succesfully converted");
 }
 
 void MainWindow::onButtonSetCsvPathClicked()
@@ -120,11 +112,12 @@ void MainWindow::onButtonSetCsvPathClicked()
     dialog.setOption(QFileDialog::ShowDirsOnly);
     dialog.exec();
     converter.options.setPath(dialog.selectedFiles()[0]);
+    ui->textEdit->setText(dialog.selectedFiles()[0]);
 }
 
 void MainWindow::onButtonOpenNewCSVClicked()
 {
-    if(csvWasLoad)
+    if(dbWasLoad)
     {
         auto q = QMessageBox::question(this,
             "Closing table", "This will close currently open table. Do you want to continue?",
@@ -133,34 +126,32 @@ void MainWindow::onButtonOpenNewCSVClicked()
             return;
         ui->tabWidget->Clear();
         ui->listWidget->Clear();
-        if (dbModel)
-            delete dbModel;
-        if (csvModel)
-            delete csvModel;
-        csvWasLoad = false;
+        delete dbModel;
+        dbWasLoad = false;
     }
     QStringList csvFileNames = QFileDialog::getOpenFileNames(this, "CSV file", "", "CSV files (*.csv)");
     if(csvFileNames.empty())
         return;
-
-    csvModel = new CsvModel(csvFileNames);
+    dbModel = new CsvModel(csvFileNames);
     //Заполнить представление для таблиц бд
-    ui->tabWidget->SetModel(csvModel);
+    ui->tabWidget->SetModel(dbModel);
     //Заполнить представление для списка таблиц с выбором таблиц на импорт
-    ui->listWidget->SetModel(csvModel);
-    csvWasLoad = true;
+    ui->listWidget->SetModel(dbModel);
+    dbWasLoad = true;
+    loadDbType = false;
 }
 
 void MainWindow::onButtonExportCSVtoDBClicked()
 {
-    if(!csvWasLoad)
+    if(!dbWasLoad || loadDbType)
     {
         QMessageBox::warning(this,"Error","Csv was not load");
         return;
     }
 
     auto tablesToSave = ui->listWidget->GetTablesToSave();
-    converter.csvToSql(csvModel->getModels(), tablesToSave);
+    converter.csvToSql(dbModel->getModels(), tablesToSave);
+    QMessageBox::information(this,"Success","CSV was succesfully converted");
     /*for(auto it = files.begin();it!=files.end();++it)
     {
         QFile file(converter.options.getPath() + it.key());
@@ -172,5 +163,3 @@ void MainWindow::onButtonExportCSVtoDBClicked()
         file.close();
     }*/
 }
-
-

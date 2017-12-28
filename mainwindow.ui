@@ -157,54 +157,105 @@
           </layout>
          </widget>
          <widget class="QWidget" name="exportSettings">
-          <widget class="QGroupBox" name="groupBox">
-           <property name="geometry">
-            <rect>
-             <x>20</x>
-             <y>20</y>
-             <width>561</width>
-             <height>71</height>
-            </rect>
+          <layout class="QVBoxLayout" name="verticalLayout">
+           <property name="leftMargin">
+            <number>11</number>
            </property>
-           <property name="title">
-            <string>Path selection</string>
+           <property name="topMargin">
+            <number>11</number>
            </property>
-           <layout class="QGridLayout" name="gridLayout_4">
-            <item row="0" column="0">
-             <widget class="QTextEdit" name="textEdit"/>
-            </item>
-            <item row="0" column="1">
+           <item>
+            <widget class="QGroupBox" name="groupBox">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>1</horstretch>
+               <verstretch>1</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>695</width>
+               <height>71</height>
+              </size>
+             </property>
+             <property name="title">
+              <string>Path selection</string>
+             </property>
+             <widget class="QTextEdit" name="textEdit">
+              <property name="geometry">
+               <rect>
+                <x>12</x>
+                <y>28</y>
+                <width>571</width>
+                <height>31</height>
+               </rect>
+              </property>
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>571</width>
+                <height>31</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>571</width>
+                <height>31</height>
+               </size>
+              </property>
+             </widget>
              <widget class="QPushButton" name="ButtonSetCsvPath">
+              <property name="geometry">
+               <rect>
+                <x>590</x>
+                <y>29</y>
+                <width>93</width>
+                <height>28</height>
+               </rect>
+              </property>
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="text">
                <string>Set csv path</string>
               </property>
              </widget>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QGroupBox" name="TablesToExport">
-           <property name="geometry">
-            <rect>
-             <x>20</x>
-             <y>110</y>
-             <width>561</width>
-             <height>221</height>
-            </rect>
-           </property>
-           <property name="title">
-            <string>Tables to export</string>
-           </property>
-           <widget class="DbNamesListView" name="listWidget">
-            <property name="geometry">
-             <rect>
-              <x>12</x>
-              <y>28</y>
-              <width>537</width>
-              <height>181</height>
-             </rect>
-            </property>
-           </widget>
-          </widget>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="TablesToExport">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>3</horstretch>
+               <verstretch>5</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="title">
+              <string>Tables to export</string>
+             </property>
+             <widget class="DbNamesListView" name="listWidget">
+              <property name="geometry">
+               <rect>
+                <x>12</x>
+                <y>28</y>
+                <width>571</width>
+                <height>181</height>
+               </rect>
+              </property>
+             </widget>
+             <zorder>listWidget</zorder>
+             <zorder>groupBox</zorder>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </widget>
        </item>
@@ -253,7 +304,7 @@
           </size>
          </property>
          <property name="text">
-          <string>PushButton</string>
+          <string>Db</string>
          </property>
          <property name="checkable">
           <bool>true</bool>

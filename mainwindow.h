@@ -45,10 +45,11 @@ private slots:
 private:
     Ui::MainWindow *ui;
     bool dbWasLoad = false;
+    bool loadDbType = false;
     bool csvWasLoad = false;
     SqlModelConverter converter;
     DbManager* dbManager = nullptr;
-    DbModel* dbModel = nullptr;
+    AbstractDbModel* dbModel = nullptr;
     CsvModel* csvModel = nullptr;
 };
 

@@ -27,7 +27,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->TabDatabase,SIGNAL(clicked(bool)), this, SLOT(onTabDatabaseClicked()));
 
-    connect(ui->TabExport,SIGNAL(clicked(bool)), this, SLOT(onTabExportClicked()));
+    //connect(ui->TabExport,SIGNAL(clicked(bool)), this, SLOT(onTabExportClicked()));
 
     connect(ui->TabSettings,SIGNAL(clicked(bool)), this, SLOT(onTabSettingsClicked()));
     /*ui->widget->setStyleSheet("QWidget{background-color:rgb(165, 165, 165);}"
@@ -55,14 +55,14 @@ void MainWindow::onTabDatabaseClicked()
     ui->stackedWidget->setCurrentIndex(1);
 }*/
 
-void MainWindow::onTabExportClicked()
-{
-    ui->stackedWidget->setCurrentIndex(1);
-}
+//void MainWindow::onTabExportClicked()
+//{
+//    ui->stackedWidget->setCurrentIndex(1);
+//}
 
 void MainWindow::onTabSettingsClicked()
 {
-    ui->stackedWidget->setCurrentIndex(2);
+    ui->stackedWidget->setCurrentIndex(1);
 }
 
 void MainWindow::onButtonOpenNewDBClicked()

@@ -28,7 +28,7 @@ private slots:
 
     //void onTabCSVClicked();
 
-    void onTabExportClicked();
+    //void onTabExportClicked();
 
     void onTabSettingsClicked();
 

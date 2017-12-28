@@ -127,7 +127,7 @@ void MainWindow::onButtonOpenNewCSVClicked()
     if(csvWasLoad)
     {
         auto q = QMessageBox::question(this,
-            "Closing db", "This will close currently open table. Do you want to continue?",
+            "Closing table", "This will close currently open table. Do you want to continue?",
             QMessageBox::Yes|QMessageBox::No);
         if(q == QMessageBox::No)
             return;
@@ -160,8 +160,7 @@ void MainWindow::onButtonExportCSVtoDBClicked()
     }
 
     auto tablesToSave = ui->listWidget->GetTablesToSave();
-    QHash<QString, QString> files;
-    converter.csvToSql(csvModel->getModels(), tablesToSave, files);
+    converter.csvToSql(csvModel->getModels(), tablesToSave);
     /*for(auto it = files.begin();it!=files.end();++it)
     {
         QFile file(converter.options.getPath() + it.key());

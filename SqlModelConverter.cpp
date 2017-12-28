@@ -44,10 +44,10 @@ void SqlModelConverter::sqlToCsv(const QVector<QSqlTableModel*> &&models, const 
     }
 }
 
-void SqlModelConverter::csvToSql(const QVector<QSqlTableModel*> &&models, const QStringList &tablesToConvert, QHash<QString, QString> &result)
+void SqlModelConverter::csvToSql(const QVector<QSqlTableModel*> &models, const QStringList &tablesToConvert)
 {
-    /*QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    QString dbName=options.getPath();\\+"/";
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    QString dbName=options.getPath();
     for (int i=0; i<models.count()-1; ++i)
     {
         dbName+=models[i]->tableName()+"_";
@@ -63,49 +63,52 @@ void SqlModelConverter::csvToSql(const QVector<QSqlTableModel*> &&models, const 
 
     for (int modelNum = 0; modelNum < models.count(); ++modelNum)
     {
-        QSqlQuery query;
-        QVector<ElementType> columnTypes = models[modelNum]->getColumnTypes();
-
-        QString queryString = QString("create table if not exists %1(").arg(models[modelNum]->tableName());
-        for (int column = 0; column < models[modelNum]->columnCount(); ++column)
-            queryString += QString("\"%1\" %2, ")
-                    .arg(models[modelNum]->headerData(column, Qt::Horizontal, Qt::DisplayRole).toString())
-                    .arg(getTypeString(columnTypes[modelNum]));
-
-        queryString.remove(queryString.length() - 2, 2);
-        queryString += ")";
-        if (!query.exec(queryString))
+        if (tablesToConvert.indexOf(models[modelNum]->tableName()) >= 0)
         {
-            qDebug("Failed to create table.");
-            qDebug(qPrintable(query.lastError().text()));
-            return;
-        }
+            QSqlQuery query;
+            QVector<ElementType> columnTypes = dynamic_cast<CSVTableModel*>(models[modelNum])->getColumnTypes();
 
-        for (int i = 0; i < models[modelNum]->rowCount(); ++i)
-        {
-            queryString = QString("insert into %1 values(").arg(models[modelNum]->tableName());
-            for (int j=0; j<models[modelNum]->columnCount(); ++j)
-            {
-                if (columnTypes[j] == ElementType::STRING)
-                {
-                    queryString+=QString("'%1'").arg(models[modelNum]->data(models[modelNum]->index(i,j), Qt::DisplayRole).toString());
-                }
-                else
-                {
-                    queryString+=models[modelNum]->data(models[modelNum]->index(i,j), Qt::DisplayRole).toString();
-                }
-                queryString+=", ";
-            }
+            QString queryString = QString("create table if not exists %1(").arg(models[modelNum]->tableName());
+            for (int column = 0; column < models[modelNum]->columnCount(); ++column)
+                queryString += QString("\"%1\" %2, ")
+                        .arg(models[modelNum]->headerData(column, Qt::Horizontal, Qt::DisplayRole).toString())
+                        .arg(getTypeString(columnTypes[modelNum]));
+
             queryString.remove(queryString.length() - 2, 2);
             queryString += ")";
-
             if (!query.exec(queryString))
             {
-                qDebug("Failed to append table.");
+                qDebug("Failed to create table.");
                 qDebug(qPrintable(query.lastError().text()));
                 return;
             }
+
+            for (int i = 0; i < models[modelNum]->rowCount(); ++i)
+            {
+                queryString = QString("insert into %1 values(").arg(models[modelNum]->tableName());
+                for (int j=0; j<models[modelNum]->columnCount(); ++j)
+                {
+                    if (columnTypes[j] == ElementType::STRING)
+                    {
+                        queryString+=QString("'%1'").arg(models[modelNum]->data(models[modelNum]->index(i,j), Qt::DisplayRole).toString());
+                    }
+                    else
+                    {
+                        queryString+=models[modelNum]->data(models[modelNum]->index(i,j), Qt::DisplayRole).toString();
+                    }
+                    queryString+=", ";
+                }
+                queryString.remove(queryString.length() - 2, 2);
+                queryString += ")";
+
+                if (!query.exec(queryString))
+                {
+                    qDebug("Failed to append table.");
+                    qDebug(qPrintable(query.lastError().text()));
+                    return;
+                }
+            }
         }
     }
-    db.close();*/
+    db.close();
 }

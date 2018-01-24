@@ -4,6 +4,8 @@
 #include <QString>
 #include <QtSql>
 #include "CSVTableModel.h"
+#include <QSqlDatabase>
+#include "DbManager.h"
 
 /**
  * @brief Класс настроек конвертера SqlModelConverter
@@ -94,7 +96,20 @@ public:
      * @param tablesToConvert Список имён таблиц, для которых надо выполнить преобразование
      * @param result Словарь вида "Имя таблицы" - "содержимое соответствующего csv-файла"
      */
-    void sqlToCsv(const QVector<QSqlTableModel*> &&models, const QStringList &tablesToConvert, QHash<QString, QString>& result);
+    void sqlToCsv(const QVector<QSqlTableModel *> &models, const QStringList &tablesToConvert, QHash<QString, QString>& result);
+
+    /**
+     * @brief Деструктор
+     */
+    ~SqlModelConverter();
+
+    /**
+     * @brief Преобразует таблицы sql в csv-файлы
+     * Преобразует таблицы CSV, заданные в форме моделей, в файл базы данных согласно настройкам, установленным в конструкторе класса.
+     *
+     * @param models массив моделей таблиц
+     * @param tablesToConvert список имён таблиц, для которых надо выполнить преобразование
+     */
     void csvToSql(const QVector<QSqlTableModel*> &models, const QStringList &tablesToConvert);
     ConverterOptions options; /**< TODO: describe */
 };

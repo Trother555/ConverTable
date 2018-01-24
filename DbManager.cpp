@@ -10,10 +10,6 @@ DbManager::DbManager(const QString& path, QString &&connectionName)
         qDebug() << "Error: connection with database fail";
         qDebug() << m_db->lastError();
     }
-    else
-    {
-        qDebug() << "Database: connection ok";
-    }
 
 }
 
@@ -33,8 +29,7 @@ QStringList DbManager::getTables()
 
 DbManager::~DbManager()
 {
-    qDebug()<<"Deliting db manager and closing connection";
-    for(auto&model:models)
+    for (auto&model:models)
     {
         delete model;
     }

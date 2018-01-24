@@ -6,7 +6,7 @@
  * @brief Интерфейс для модели базы данных
  *
  */
-class AbstractDbModel
+class AbstractTableModel
 {
 public:
     /**
@@ -14,8 +14,12 @@ public:
      *
      * @return const QVector<QSqlTableModel *> модели таблиц бд
      */
-    virtual const QVector<QSqlTableModel*> getModels() = 0;
-    virtual ~AbstractDbModel(){}
+    virtual const QVector<QSqlTableModel*>& getModels() const = 0;
+
+    /**
+     * @brief Деструктор
+     */
+    virtual ~AbstractTableModel(){}
 };
 
 #endif // ABSTRACTDBMODEL_H

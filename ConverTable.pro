@@ -28,34 +28,31 @@ SOURCES += \
 	main.cpp \
 	mainwindow.cpp \
     DbManager.cpp \
-    DbTablesView.cpp \
     SqlModelConverter.cpp \
-    elementtype.cpp \
-    csvtable.cpp \
     DbNamesListView.cpp \
     ToggleButton.cpp \
     ButtonGroup.cpp \
     DbModel.cpp \
     AbstractDbModel.cpp \
     CSVTableModel.cpp \
-    CsvModel.cpp \
-    Tests/test_converter.cpp
+    CSVModel.cpp \
+    ElementType.cpp \
+    DbTablesView.cpp \
+    Tests/test_main.cpp
 
 HEADERS += \
 	mainwindow.h \
     DbManager.h \
-    DbTablesView.h \
     SqlModelConverter.h \
-    csvtable.h \
-    elemettype.h \
     DbNamesListView.h \
     ToggleButton.h \
     ButtonGroup.h \
     DbModel.h \
     AbstractDbModel.h \
     CSVTableModel.h \
-    CsvModel.h \
-    Tests/test_converter.h
+    CSVModel.h \
+    ElemetType.h \
+    DbTablesView.h
 
 FORMS += \
 	mainwindow.ui
@@ -71,14 +68,14 @@ tests{
     SOURCES -= main.cpp
 
     SOURCES += \
-    Tests/test_test.cpp \
     Tests/test_dbmanager.cpp \
     Tests/test_dbnameslistview.cpp \
-    Tests/test_helpers.cpp
+    Tests/test_helpers.cpp \
+    Tests/test_converter.cpp
 
     HEADERS += \
-    Tests/test_test.h \
     Tests/test_dbmanager.h \
     Tests/test_dbnameslistview.h \
-    Tests/test_helpers.h
+    Tests/test_helpers.h \
+    Tests/test_converter.h
 }

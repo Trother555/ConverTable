@@ -2,7 +2,7 @@
 #define TEST_CONVERTER_H
 #include <QtTest>
 
-class test_converter: public QObject
+class Test_Converter: public QObject
 {
     Q_OBJECT
 private slots:

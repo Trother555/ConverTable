@@ -1,4 +1,4 @@
-#include "elemettype.h"
+#include "ElemetType.h"
 
 
 ElementType getType(QString val)
@@ -8,16 +8,16 @@ ElementType getType(QString val)
     val.toInt(&ok, 10);
     if (ok)
     {
-        return ElementType::INT;
+        return ElementType::INTEGER;
     }
 
     val.toDouble(&ok);
     if (ok)
     {
-        return ElementType::DOUBLE;
+        return ElementType::REAL;
     }
 
-    return ElementType::STRING;
+    return ElementType::TEXT;
 }
 
 
@@ -25,11 +25,11 @@ QString getTypeString(ElementType type)
 {
     switch (type)
     {
-    case ElementType::INT:
+    case ElementType::INTEGER:
         return QString("INTEGER");
-    case ElementType::DOUBLE:
+    case ElementType::REAL:
         return QString("REAL");
-    case ElementType::STRING:
+    case ElementType::TEXT:
         return QString("TEXT");
     }
     return QString();

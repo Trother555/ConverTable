@@ -18,10 +18,13 @@ Inheritance diagram for Db\+Model\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_db_model_ae102f26485df0f84f97132e7f2066771}{Db\+Model} (\hyperlink{class_db_manager}{Db\+Manager} $\ast$db)
+\mbox{\hyperlink{class_db_model_ae102f26485df0f84f97132e7f2066771}{Db\+Model}} (\mbox{\hyperlink{class_db_manager}{Db\+Manager}} $\ast$db)
 \item 
-const Q\+Vector$<$ Q\+Sql\+Table\+Model $\ast$ $>$ \hyperlink{class_db_model_aa185ea5bffa09016b3efb99591d173d3}{get\+Models} ()
-\begin{DoxyCompactList}\small\item\em Возвращает модели таблиц \end{DoxyCompactList}\end{DoxyCompactItemize}
+const Q\+Vector$<$ Q\+Sql\+Table\+Model $\ast$ $>$ \& \mbox{\hyperlink{class_db_model_abc8c110a4d9fa82bbf9cf6152331b645}{get\+Models}} () const override
+\begin{DoxyCompactList}\small\item\em Возвращает модели таблиц \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_db_model_a383eb537ab1f74f8b1e816e76994a7c2}\label{class_db_model_a383eb537ab1f74f8b1e816e76994a7c2}} 
+Q\+String\+List {\bfseries get\+Table\+Names} () const
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -32,7 +35,7 @@ const Q\+Vector$<$ Q\+Sql\+Table\+Model $\ast$ $>$ \hyperlink{class_db_model_aa1
 \index{Db\+Model@{Db\+Model}!Db\+Model@{Db\+Model}}
 \index{Db\+Model@{Db\+Model}!Db\+Model@{Db\+Model}}
 \subsubsection{\texorpdfstring{Db\+Model()}{DbModel()}}
-{\footnotesize\ttfamily Db\+Model\+::\+Db\+Model (\begin{DoxyParamCaption}\item[{\hyperlink{class_db_manager}{Db\+Manager} $\ast$}]{db }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Db\+Model\+::\+Db\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_db_manager}{Db\+Manager}} $\ast$}]{db }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}
@@ -42,11 +45,11 @@ const Q\+Vector$<$ Q\+Sql\+Table\+Model $\ast$ $>$ \hyperlink{class_db_model_aa1
 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{class_db_model_aa185ea5bffa09016b3efb99591d173d3}\label{class_db_model_aa185ea5bffa09016b3efb99591d173d3}} 
+\mbox{\Hypertarget{class_db_model_abc8c110a4d9fa82bbf9cf6152331b645}\label{class_db_model_abc8c110a4d9fa82bbf9cf6152331b645}} 
 \index{Db\+Model@{Db\+Model}!get\+Models@{get\+Models}}
 \index{get\+Models@{get\+Models}!Db\+Model@{Db\+Model}}
 \subsubsection{\texorpdfstring{get\+Models()}{getModels()}}
-{\footnotesize\ttfamily const Q\+Vector$<$ Q\+Sql\+Table\+Model $\ast$ $>$ Db\+Model\+::get\+Models (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily const Q\+Vector$<$ Q\+Sql\+Table\+Model $\ast$ $>$ \& Db\+Model\+::get\+Models (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -57,7 +60,7 @@ const Q\+Vector$<$\+Q\+Sql\+Table\+Model $\ast$$>$ модели таблиц б�
 \end{DoxyReturn}
 
 
-Implements \hyperlink{class_abstract_db_model_aa0f683c2d6cc8d3018baaaba8b1bff9c}{Abstract\+Db\+Model}.
+Implements \mbox{\hyperlink{class_abstract_table_model_ac0e21bec862902ff88251c8880ec5014}{Abstract\+Table\+Model}}.
 
 
 

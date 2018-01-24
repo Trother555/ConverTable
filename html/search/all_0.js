@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['abstractdbmodel',['AbstractDbModel',['../class_abstract_db_model.html',1,'']]]
+  ['abstracttablemodel',['AbstractTableModel',['../class_abstract_table_model.html',1,'']]]
 ];

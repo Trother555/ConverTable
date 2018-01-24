@@ -1,8 +1,11 @@
 <RCC>
-    <qresource lang="all" prefix="/buttons">
+    <qresource prefix="/buttons" lang="all">
         <file>png/data-base.png</file>
     </qresource>
-    <qresource lang="all" prefix="/database">
+    <qresource prefix="/database" lang="all">
         <file>Tests/mydatabase.sqlite</file>
+        <file>Tests/csv_input/test1.csv</file>
+        <file>Tests/csv_input/test2.csv</file>
+        <file>Tests/csv_input/test3.csv</file>
     </qresource>
 </RCC>

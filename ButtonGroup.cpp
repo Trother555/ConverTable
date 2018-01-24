@@ -8,15 +8,15 @@ ButtonGroup::ButtonGroup(QWidget *&p):QWidget(p)
 void ButtonGroup::SetSignleChecked()
 {
     ToggleButton *s = qobject_cast<ToggleButton*>(sender());
-    if(s == nullptr)
+    if (s == nullptr)
         return;
     s->setChecked(true);
-    for(QObject*c:this->children())
+    for (QObject*c:this->children())
     {
         ToggleButton* tmp =qobject_cast<ToggleButton*>(c);
-        if(tmp==nullptr)
+        if (tmp==nullptr)
             continue;
-        if(tmp!=s)
+        if (tmp!=s)
         {
             bool state = tmp->blockSignals(true);
             tmp->setChecked(false);

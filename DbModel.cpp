@@ -4,21 +4,21 @@ DbModel::DbModel(DbManager* db)
 {
     db->setParent(this);
     QStringList tableNames = db->getTables();
-    for(const auto& tableName : tableNames)
+    for (const auto& tableName : tableNames)
     {
         models.push_back(db->getModel(tableName));
     }
 }
 
-const QVector<QSqlTableModel*> DbModel::getModels()
+const QVector<QSqlTableModel*>& DbModel::getModels() const
 {
     return models;
 }
 
-const QStringList DbModel::getTableNames()
+QStringList DbModel::getTableNames() const
 {
     QStringList result;
-    for(QSqlTableModel*m:models)
+    for (QSqlTableModel*m:models)
     {
         result.push_back(m->tableName());
     }
@@ -28,6 +28,5 @@ const QStringList DbModel::getTableNames()
 
 DbModel::~DbModel()
 {
-    qDebug()<<"Deliting model";
 }
 

@@ -1,5 +1,5 @@
 #include "CSVTableModel.h"
-#include "CSVTableModel.h"
+#include <QFileInfo>
 #include <QFile>
 #include <QStringList>
 #include <QString>
@@ -75,142 +75,113 @@ void CSVTableModel::reset()
 
 
 
-void CSVTableModel::splitRow(const QByteArray &row, const QString& sep, QStringList &result, bool& isFullRow)
+QStringList CSVTableModel::splitRow(const QString &row, const QString& sep, bool& isFull)
 {
-    isFullRow = true;
-    QString rowString(row);
-    //Если строка в файле не последняя, то
-    //сразу отрезается символ конца строки
-    if (rowString.endsWith('\n'))
+    QString rowCopy(row);
+    isFull = true;
+
+    int index = rowCopy.indexOf("\"\"");
+
+    //Все парные двойные кавычки заменяются на спецсимвол 0x01
+    while(index >= 0)
     {
-        rowString.chop(1);
+       rowCopy[index] = 0x01; //заглушка для двойной кавычки
+       rowCopy.remove(index+1, 1);
+
+       index = rowCopy.indexOf("\"\"");
     }
 
-    QStringList first = rowString.split(sep);
+    if (rowCopy.endsWith('\n'))
+    {
+        rowCopy.chop(1);
+    }
+
+    QStringList allParts = rowCopy.split(sep);
+    QStringList result;
 
     int i=0;
 
-    //Если передана неоконченная строка, то присоединить
-    //её последнюю ячейку к первой ячейке текущей строки
-    if (!result.isEmpty())
+    while(i<allParts.count())
     {
-        //Неполный последний элемент прошлой строки
-        //становится частью первого элемента новой
-        //
-        //В середину вставляется символ конца строки,
-        //удалённый в прошлом вызове функции
-        first[0]=result.last()+"\n"+first[0];
-        result.removeLast();
-
-        //Если эта же строка заканчивается кавычкой
-        if (first[0].endsWith('\"'))
+        if (allParts[i].startsWith('\"'))
         {
-            result << first[0].remove(first[0].count()-1, 1).remove(0, 1);
-            i=1;
-        }
-        //Если требуется поиск далее по списку
-        else
-        {
-            int j=1;
-
-            //Приклеиваем подстроки, пока не дойдём до конца
-            //или пока не встретим закрывающую кавычку
-            //
-            //Добавляется сепаратор, т.к. он при сплите удалился
-            while (j<first.count() && !first[j].endsWith('\"'))
+            if (allParts[i].endsWith('\"'))
             {
-                first[0]+=sep+first[j];
-                ++j;
-            }
+                allParts[i].remove(0, 1);
+                allParts[i].chop(1);
 
-
-            //Если закончили из-за того, что перебрали все элементы строки,
-            //то полученная строка была неполной и к ней надо добавить данные
-            //из следующей строки файла
-            if (j == first.count())
-            {
-                result << first[0];
-                isFullRow = false;
-                return;
-            }
-
-            //Нашли подстроку, заканчивающуюся кавычкой
-            first[0]+=sep+first[j];
-            result << first[0].remove(first[0].count()-1, 1).remove(0, 1);
-            i=j+1;
-        }
-    }
-
-    //rowString.ch//.remove(rowString.count()-1, 1).remove(0, 1);
-
-    while (i<first.count())
-    {
-        //Если строка в списке, разделённом по sep, начинается с кавычки, то нужно найти
-        //строку, заканчивающуюся кавычкой (возможно, это будет та же строка)
-        if (first[i].startsWith('\"'))
-        {
-            //Если эта же строка заканчивается кавычкой
-            if (first[i].endsWith('\"'))
-            {
-                result << first[i].remove(first[i].count()-1, 1).remove(0, 1);
+                result << allParts[i];
                 ++i;
             }
-            //Если требуется поиск далее по списку
             else
             {
                 int j=i+1;
 
-                //Приклеиваем подстроки, пока не дойдём до конца
-                //или пока не встретим закрывающую кавычку
-                //
-                //Добавляется сепаратор, т.к. он при сплите удалился
-                while (j<first.count() && !first[j].endsWith('\"'))
+                while(j<allParts.count() && !allParts[j].endsWith('\"'))
                 {
-                    first[i]+=sep+first[j];
+                    allParts[i] += sep + allParts[j];
                     ++j;
                 }
 
-                //Если закончили из-за того, что перебрали все элементы строки,
-                //то полученная строка была неполной и к ней надо добавить данные
-                //из следующей строки файла
-                if (j == first.count())
-                {
-                    result << first[i];
-                    isFullRow = false;
-                    return;
-                }
 
-                //Нашли подстроку, заканчивающуюся кавычкой
-                //
-                //Добавляется сепаратор, т.к. он при сплите удалился
-                first[i]+=sep+first[j];
-                result << first[i].remove(first[i].count()-1, 1).remove(0, 1);
-                i=j+1;
+                //Если дошли до конца списка всех подстрок, но так и не нашли ту,
+                //которая заканчивается на кавычку
+                if (j==allParts.count())
+                {
+                    result << allParts[i];
+                    isFull = false;
+
+                    i = j; //условие выхода из внешнего while
+                }
+                //Если нашли строку, которая заканчивается на кавычку
+                else
+                {
+                    allParts[i] += sep + allParts[j];
+                    allParts[i].remove(0, 1);
+                    allParts[i].chop(1); //удаляется кавычка
+
+                    result << allParts[i];
+
+                    i=j+1;
+                }
             }
         }
-        //Если строка начинается не с кавычки, то просто закидываем её в second
         else
         {
-            result<<first[i];
+            result << allParts[i];
             ++i;
         }
     }
 
 
-    //return ((QString)row).split(sep);
+    //Спецсимвол 0x01 во всех подстроках заменяется на кавычку
+    for (int i=0; i<result.count(); ++i)
+    {
+        index = result[i].indexOf(0x01);
+        while (index>=0)
+        {
+            result[i][index] = '\"';
+            index = result[i].indexOf(0x01);
+        }
+    }
+
+
+    if (!isFull && row.endsWith('\n'))
+    {
+        result.last() += '\n';
+    }
+
+    return result;
 }
 
 
-ErrorCode CSVTableModel::readFromFile(const QString &filename, const QString &sep)
+bool CSVTableModel::readFromFile(const QString &filename, const QString &sep)
 {
-    if (this->rowCount() != 0)
+    emit beginResetModel();
+
+    if (rowCount() != 0)
     {
         reset();
-    }
-
-    if (!columnTypes.empty())
-    {
-        columnTypes.clear();
     }
 
     if (!horizontalHeader.empty())
@@ -218,71 +189,82 @@ ErrorCode CSVTableModel::readFromFile(const QString &filename, const QString &se
         horizontalHeader.clear();
     }
 
-    QFile file(filename);
+    QFile csvFile(filename);
 
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-        return ErrorCode::NO_SUCH_FILE;
-
-    setTable(QFileInfo(file).completeBaseName());
-
-    bool isFullRow = true;
-
-    if (!file.atEnd())
+    if (!csvFile.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-        splitRow(file.readLine(), sep, horizontalHeader, isFullRow);
-        while (!isFullRow)
-        {
-            splitRow(file.readLine(), sep, horizontalHeader, isFullRow);
-        }
-        emit headerDataChanged(Qt::Orientation::Horizontal, 0, horizontalHeader.count()-1);
-
-        //columnCount = columnNames.count();
-        columnTypes.fill(ElementType::INT, columnCount());
+        emit endResetModel();
+        return false;
     }
 
+    setTable(QFileInfo(filename).completeBaseName());
 
-    while (!file.atEnd())
+    bool isFull=false;
+
+    QStringList splittedRow = splitRow(csvFile.readLine(), sep, isFull);
+
+    while (!csvFile.atEnd() && !isFull)
     {
-        QStringList row;
+        QString lastCell = splittedRow.last();
+        splittedRow.removeLast();
 
-        splitRow(file.readLine(), sep, row, isFullRow);
-        while (!isFullRow)
+        splittedRow.append(splitRow(lastCell + csvFile.readLine(), sep, isFull));
+    }
+
+    if (!isFull)
+    {
+        emit endResetModel();
+        return false;
+    }
+
+    horizontalHeader = splittedRow;
+
+    columnTypes.fill(ElementType::INTEGER, horizontalHeader.count());
+
+    while (!csvFile.atEnd())
+    {
+        isFull=false;
+
+        QStringList splittedRow = splitRow(csvFile.readLine(), sep, isFull);
+
+        while (!csvFile.atEnd() && !isFull)
         {
-            splitRow(file.readLine(), sep, row, isFullRow);
+            QString lastCell = splittedRow.last();
+            splittedRow.removeLast();
+
+            splittedRow.append(splitRow(lastCell + csvFile.readLine(), sep, isFull));
         }
 
-        if (columnCount() != row.count())
+        if (!isFull || splittedRow.count() != horizontalHeader.count())
         {
-            file.close();
-            return ErrorCode::UNEQUAL_COLUMN_COUNT;
-        }
-
-        for (int i = 0; i < row.count(); ++i)
-        {
-            ElementType type = getType(row[i]);
-
-            //Типы введены так:
-            //INT = 0
-            //DOUBLE = 1
-            //STRING = 2
-            //Если тип элемента столбца в текущей строке больше, чем тип предыдущих
-            //элементов этого столбца, то нужно изменить тип всего столбца
-            if (type > columnTypes[i])
+            horizontalHeader.clear();
+            for (int i=0; i<table.count(); ++i)
             {
-                columnTypes[i] = type;
+                table[i].clear();
+            }
+            table.clear();
+
+            emit endResetModel();
+            return false;
+        }
+
+        //строка сформирована
+
+        for (int i=0; i<horizontalHeader.count(); ++i)
+        {
+            ElementType currentType = getType(splittedRow[i]);
+            if (currentType > columnTypes[i])
+            {
+                columnTypes[i] = currentType;
             }
         }
 
-        //???
-        emit beginInsertRows(QModelIndex(), table.count(), table.count());
-
-        table.append(row);
-
-        emit endInsertRows();
-
+        table.append(splittedRow);
     }
 
-    return ErrorCode::NO_ERROR;
+    emit endResetModel();
+
+    return true;
 }
 
 const QVector<ElementType> &CSVTableModel::getColumnTypes() const

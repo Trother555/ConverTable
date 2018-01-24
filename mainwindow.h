@@ -5,7 +5,7 @@
 #include <QSqlTableModel>
 #include "SqlModelConverter.h"
 #include "dbmodel.h"
-#include "CsvModel.h"
+#include "CSVModel.h"
 
 
 namespace Ui {
@@ -24,33 +24,47 @@ public:
 
 private slots:
 
+    /**
+     * @brief Функция обработки нажатия на кнопку выбора вкладки таблиц
+     */
     void onTabDatabaseClicked();
 
-    //void onTabCSVClicked();
-
-    //void onTabExportClicked();
-
+    /**
+     * @brief Функция обработки нажатия на кнопку выбора вкладки настроек
+     */
     void onTabSettingsClicked();
 
+    /**
+     * @brief Функция обработки нажатия на кнопку открытия файла базы данных
+     */
     void onButtonOpenNewDBClicked();
 
+    /**
+     * @brief Функция обработки нажатия на кнопку преобразования данных в формат CSV
+     */
     void onButtonExportDBtoCSVClicked();
 
+    /**
+     * @brief Функция обработки нажатия на кнопку открытия файлов CSV
+     */
     void onButtonOpenNewCSVClicked();
 
+    /**
+     * @brief Функция обработки нажатия на кнопку преобразования данных в формат базы данных
+     */
     void onButtonExportCSVtoDBClicked();
 
+    /**
+     * @brief Функция обработки нажатия на кнопку выбора пути сохранения файлов
+     */
     void onButtonSetCsvPathClicked();
 
 private:
     Ui::MainWindow *ui;
     bool dbWasLoad = false;
-    bool loadDbType = false;
     bool csvWasLoad = false;
     SqlModelConverter converter;
-    DbManager* dbManager = nullptr;
-    AbstractDbModel* dbModel = nullptr;
-    CsvModel* csvModel = nullptr;
+    AbstractTableModel* model = nullptr;
 };
 
 #endif // MAINWINDOW_H

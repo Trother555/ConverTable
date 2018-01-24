@@ -225,7 +225,7 @@
                </sizepolicy>
               </property>
               <property name="text">
-               <string>Set csv path</string>
+               <string>Set path</string>
               </property>
              </widget>
             </widget>
@@ -251,8 +251,6 @@
                </rect>
               </property>
              </widget>
-             <zorder>listWidget</zorder>
-             <zorder>groupBox</zorder>
             </widget>
            </item>
           </layout>
